@@ -33,7 +33,7 @@ import carrent from "./carrent.png";
 import jobit from "./jobit.png";
 import tripguide from "./tripguide.png";
 
-import kunal from './kunal.jpeg';
+import kunal from './Kunal.jpeg'
 import rajesh from './rajesh.jpeg';
 
 export {
