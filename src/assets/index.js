@@ -34,7 +34,7 @@ import jobit from "./jobit.png";
 import tripguide from "./tripguide.png";
 
 import kunal from './Kunal.jpeg'
-import rajesh from './rajesh.jpeg';
+import rajesh from './Rajesh.jpeg'
 
 export {
   logo,
