@@ -26,6 +26,8 @@ import {
   nextjs,
   kunal,
   rajesh,
+  adobe,
+  fastx,
 } from "../assets";
 
 export const navLinks = [
@@ -81,6 +83,10 @@ const technologies = [
     icon: reactjs,
   },
   {
+    name: "Nextjs",
+    icon: nextjs,
+  },
+  {
     name: "Redux Toolkit",
     icon: redux,
   },
@@ -101,13 +107,11 @@ const technologies = [
     icon: threejs,
   },
   {
-    name: "git",
+    name: "Git",
     icon: git,
   },
-  {
-    name: "figma",
-    icon: figma,
-  },
+  
+  
   // {
   //   name: "docker",
   //   icon: docker,
@@ -117,15 +121,19 @@ const technologies = [
     icon: cobol,
   },
   {
-    name: "nextjs",
-    icon: nextjs,
+    name: "Figma",
+    icon: figma,
+  },
+  {
+    name: "Adobe",
+    icon: adobe,
   },
   {
     name: "Canva",
     icon: canva,
   },
   {
-    name: "wordpress",
+    name: "Wordpress",
     icon: wordpress,
   },
 ];
@@ -186,6 +194,25 @@ const testimonials = [
 ];
 
 const projects = [
+  {
+    name: "FastX",
+    description:
+      "FastX.com is a website designed to connect customers with reliable and efficient courier services.",
+    tags: [
+      {
+        name: "ReactJs",
+        color: "blue-text-gradient",
+      },
+      {
+        name: "TailwindCSS",
+        color: "pink-text-gradient",
+      },
+
+    ],
+    image: fastx,
+    source_code_link: "",
+    deploy_link: "https://myfastx.com/",
+  },
   {
     name: "Spotify Clone",
     description:
@@ -250,6 +277,7 @@ const projects = [
     source_code_link: "https://github.com/Jeeveshmahato/Currency_convertor",
     deploy_link: "https://brilliant-mermaid-d27c80.netlify.app/",
   },
+  
 ];
 
 export { services, technologies, experiences, testimonials, projects };
