@@ -83,7 +83,7 @@ const technologies = [
     icon: reactjs,
   },
   {
-    name: "Nextjs",
+    name: "NextJS",
     icon: nextjs,
   },
   {
