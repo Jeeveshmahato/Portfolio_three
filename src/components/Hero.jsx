@@ -7,7 +7,7 @@ const Hero = () => {
   return (
     <section className=' relative w-full h-full mx-auto'>
       <div className={`${styles.paddingX}  inset-0 top-[120px] max-w-7xl mx-auto mt-16 flex flex-row items-start gap-5`}>
-        <div className=' flex fle-col justify-center items-center mt-5'>
+        <div className=' flex flex-col justify-center items-center mt-5'>
           <div className=' w-5 h-5 rounded-full bg-[#915eff]' />
 
           <div className=' w-1 sm:h-24 h-14 violet-gradient' />
