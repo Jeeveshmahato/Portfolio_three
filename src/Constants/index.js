@@ -4,16 +4,15 @@ import {
   creator,
   web,
   javascript,
-
   html,
   css,
   reactjs,
   redux,
   tailwind,
-
   git,
   figma,
-
+  nodejs,
+  mongodb,
   carrent,
   jobit,
   tripguide,
@@ -28,6 +27,12 @@ import {
   rajesh,
   adobe,
   fastx,
+  swiggyClone,
+  Netflix,
+  youtubeClone,
+  hybrid_utopia,
+  made_by_aura,
+  prabhavati
 } from "../assets";
 
 export const navLinks = [
@@ -55,11 +60,11 @@ const services = [
     icon: mobile,
   },
   {
-    title: "Wordpress Developer",
+    title: "Backend Developer",
     icon: backend,
   },
   {
-    title: "Content Creator",
+    title: "Frontend Developer",
     icon: creator,
   },
 ];
@@ -94,14 +99,14 @@ const technologies = [
     name: "Tailwind CSS",
     icon: tailwind,
   },
-  // {
-  //   name: "Node JS",
-  //   icon: nodejs,
-  // },
-  // {
-  //   name: "MongoDB",
-  //   icon: mongodb,
-  // },
+  {
+    name: "Node JS",
+    icon: nodejs,
+  },
+  {
+    name: "MongoDB",
+    icon: mongodb,
+  },
   {
     name: "Three JS",
     icon: threejs,
@@ -110,16 +115,15 @@ const technologies = [
     name: "Git",
     icon: git,
   },
-  
-  
+
   // {
   //   name: "docker",
   //   icon: docker,
   // },
-  {
-    name: "Cobol",
-    icon: cobol,
-  },
+  // {
+  //   name: "Cobol",
+  //   icon: cobol,
+  // },
   {
     name: "Figma",
     icon: figma,
@@ -128,43 +132,103 @@ const technologies = [
     name: "Adobe",
     icon: adobe,
   },
-  {
-    name: "Canva",
-    icon: canva,
-  },
+  // {
+  //   name: "Canva",
+  //   icon: canva,
+  // },
   {
     name: "Wordpress",
     icon: wordpress,
   },
 ];
-
 const experiences = [
   {
-    title: "React.js Developer",
-    company_name: "Ricoz",
-    icon: ricoz,
+    title: "Frontend Engineer",
+    company_name: "Hybrid Utopia",
+    icon: hybrid_utopia, 
     iconBg: "#383E56",
-    date: "October 2023 - Present",
+    date: "February 2024 - Present",
     points: [
-      "Developing and maintaining web applications using React.js and other related technologies.",
-      "Collaborating with cross-functional teams including designers, product managers, and other developers to create high-quality products.",
-      "Implementing responsive design and ensuring cross-browser compatibility.",
-      "Participating in code reviews and providing constructive feedback to other developers.",
+      "Developed interactive wireframes and mock designs for landing pages, enhancing engagement for 5+ new product concepts.",
+      "Created fully accessible and responsive interfaces, contributing to a 135% increase in 5-star UX/UI reviews.",
+      "Streamlined bottlenecks in project workflow with the Complexity Score tool, increasing efficiency by 72%.",
+      "Implemented modern JavaScript frameworks, HTML5, and CSS3 for highly satisfying user experiences, with satisfaction rates up by 31%.",
+      "Conducted code reviews and rigorous testing, increasing feature stability and donor contributions by 12%.",
     ],
   },
   {
-    title: "Mainframe Developer",
-    company_name: "Cognizant Technology Solutions",
-    icon: cognizant,
-    iconBg: "#E6DEDD",
-    date: "Jan 2023 - July 2023",
+    title: "React.js Developer",
+    company_name: "Ricoz.io",
+    icon: ricoz, 
+    iconBg: "#383E56",
+    date: "October 2023 - February 2024",
     points: [
-      "Developing and maintaining Mainframes using COBOL , DB2 and other related technologies.",
-      "Collaborating with cross-functional teams including product managers, and other developers to create high-quality products.",
-      "Participating in code reviews and providing constructive feedback to other developers.",
+      "Developed responsive user interfaces with React.js.",
+      "Managed state with Redux, enhancing scalability.",
+      "Worked alongside senior developers and interns to incorporate collaborative feedback into project development.",
+      "Optimized bug detection and documentation, improving app performance by 18%.",
+    ],
+  },
+  {
+    title: "WordPress Developer",
+    company_name: "Made By Aura",
+    icon: made_by_aura, 
+    iconBg: "#E6DEDD",
+    date: "March 2024 - April 2024",
+    points: [
+      "Delivered polished WordPress sites tailored to organizational goals, excelling in visual design and compliance.",
+      "Specialized in PHP, HTML, CSS, and JavaScript to deliver compliant, user-centered designs with high brand fidelity.",
+    ],
+  },
+  {
+    title: "Junior Web Developer Intern",
+    company_name: "Prabhavati Digital Services Pvt Ltd",
+    icon: prabhavati, 
+    iconBg: "#E6DEDD",
+    date: "November 2023 - January 2024",
+    points: [
+      "Acquired hands-on experience in HTML, CSS, and JavaScript, supporting full-stack development projects with attention to UX/UI principles.",
+    ],
+  },
+  {
+    title: "Mainframe Developer Intern",
+    company_name: "Cognizant Technology Solutions",
+    icon: cognizant, 
+    iconBg: "#E6DEDD",
+    date: "February 2023 - July 2023",
+    points: [
+      "Developed and maintained mainframe applications using JCL, VSAM, COBOL, and DB2, contributing to project reliability through meticulous debugging and testing.",
     ],
   },
 ];
+
+// const experiences = [
+//   {
+//     title: "React.js Developer",
+//     company_name: "Ricoz",
+//     icon: ricoz,
+//     iconBg: "#383E56",
+//     date: "October 2023 - Present",
+//     points: [
+//       "Developing and maintaining web applications using React.js and other related technologies.",
+//       "Collaborating with cross-functional teams including designers, product managers, and other developers to create high-quality products.",
+//       "Implementing responsive design and ensuring cross-browser compatibility.",
+//       "Participating in code reviews and providing constructive feedback to other developers.",
+//     ],
+//   },
+//   {
+//     title: "Mainframe Developer",
+//     company_name: "Cognizant Technology Solutions",
+//     icon: cognizant,
+//     iconBg: "#E6DEDD",
+//     date: "Jan 2023 - July 2023",
+//     points: [
+//       "Developing and maintaining Mainframes using COBOL , DB2 and other related technologies.",
+//       "Collaborating with cross-functional teams including product managers, and other developers to create high-quality products.",
+//       "Participating in code reviews and providing constructive feedback to other developers.",
+//     ],
+//   },
+// ];
 
 const testimonials = [
   {
@@ -173,7 +237,8 @@ const testimonials = [
     name: "Ravi Kumar S",
     designation: "CEO",
     company: "Cognizant Technology Solutions",
-    image: "https://cognizant.scene7.com/is/image/cognizant/ravi-kumar-s-cognizant?fmt=png-alpha&",
+    image:
+      "https://cognizant.scene7.com/is/image/cognizant/ravi-kumar-s-cognizant?fmt=png-alpha&",
   },
   {
     testimonial:
@@ -195,6 +260,84 @@ const testimonials = [
 
 const projects = [
   {
+    name: "Youtube_Clone",
+    description:
+      "I used YouTube APIs to display real-time data, optimize search, implement live chat functionality, and handle nth comments. I developed the frontend using ReactJS and TailwindCSS, and utilized Redux for state management.",
+    tags: [
+      
+      {
+        name: "ReactJs",
+        color: "blue-text-gradient",
+      },
+      {
+        name: "Redux-ToolKit",
+        color: "orange-text-gradient",
+      },
+      {
+        name: "TailwindCSS",
+        color: "pink-text-gradient",
+      },
+      
+    ],
+    image:
+      youtubeClone,
+    source_code_link: "https://github.com/Jeeveshmahato/youtube_clone",
+    deploy_link: "https://youtube-clone-three-ivory.vercel.app/",
+  },
+  {
+    name: "Netflix_Clone",
+    description:
+      "I developed the frontend using ReactJS and TailwindCSS. I also used Google Firebase for user authentication and account management. Additionally, I utilized TMDB APIs to display real-time movies and TV shows. I built a search section to help users find their desired movies and TV shows. Please note that TMDB is blocked by some operators, so users may need to use a VPN or alternative internet providers to access the data.",
+    tags: [
+      
+      {
+        name: "ReactJs",
+        color: "blue-text-gradient",
+      },
+      {
+        name: "Redux-ToolKit",
+        color: "orange-text-gradient",
+      },
+      {
+        name: "TailwindCSS",
+        color: "pink-text-gradient",
+      },
+      {
+        name: "Firebase",
+        color: "orange-text-gradient",
+      },
+    ],
+    image:
+      Netflix,
+    source_code_link: "https://github.com/Jeeveshmahato/NetflixGPT",
+    deploy_link: "https://netflix-gpt-nu-gray.vercel.app/",
+  },
+  {
+    name: "Swiggy_Clone",
+    description:
+      "I developed the frontend using ReactJS and TailwindCSS. I also used Google Firebase for user authentication and account management. Additionally, I utilized TMDB APIs to display real-time movies and TV shows. I built a search section to help users find their desired movies and TV shows. Please note that TMDB is blocked by some operators, so users may need to use a VPN or alternative internet providers to access the data.",
+    tags: [
+      
+      {
+        name: "ReactJs",
+        color: "blue-text-gradient",
+      },
+      {
+        name: "Redux-ToolKit",
+        color: "orange-text-gradient",
+      },
+      {
+        name: "TailwindCSS",
+        color: "pink-text-gradient",
+      },
+     
+    ],
+    image:
+      swiggyClone,
+    source_code_link: "https://github.com/Jeeveshmahato/Swiggy_Clone",
+    deploy_link: "https://namaste-react-mu-dun.vercel.app/",
+  },
+  {
     name: "FastX",
     description:
       "FastX.com is a website designed to connect customers with reliable and efficient courier services.",
@@ -207,7 +350,6 @@ const projects = [
         name: "TailwindCSS",
         color: "pink-text-gradient",
       },
-
     ],
     image: fastx,
     source_code_link: "",
@@ -232,7 +374,8 @@ const projects = [
       },
     ],
 
-    image: "https://user-images.githubusercontent.com/93731220/279587656-bd623a51-a3b7-45cd-969f-cc8dd7ae486b.png",
+    image:
+      "https://user-images.githubusercontent.com/93731220/279587656-bd623a51-a3b7-45cd-969f-cc8dd7ae486b.png",
     source_code_link: "https://github.com/Jeeveshmahato/Spotify-clone",
     deploy_link: "https://jeeveshmahato.github.io/Spotify-clone/",
   },
@@ -254,28 +397,10 @@ const projects = [
         color: "pink-text-gradient",
       },
     ],
-    image: "https://user-images.githubusercontent.com/93731220/279599982-bdaa29a4-3106-4873-b664-d94dc348971d.png",
+    image:
+      "https://user-images.githubusercontent.com/93731220/279599982-bdaa29a4-3106-4873-b664-d94dc348971d.png",
     source_code_link: "https://github.com/Jeeveshmahato/cynthiaugwu-Clone",
     deploy_link: "https://jeeveshmahato.github.io/cynthiaugwu-Clone/",
-  },
-  {
-    name: "Currency Convertor",
-    description:
-      "Developed a Currency Convertor website.Here you can see the current value of any currency as compared to the USD. I this project I have used a live api to get the current data of all the currencies and give the real time value of your currency..",
-    tags: [
-      {
-        name: "ReactJs",
-        color: "blue-text-gradient",
-      },
-      {
-        name: "TailwindCSS",
-        color: "pink-text-gradient",
-      },
-
-    ],
-    image: "https://user-images.githubusercontent.com/93731220/279603535-b8a900c0-2fbe-4145-8585-14976dfd2223.png",
-    source_code_link: "https://github.com/Jeeveshmahato/Currency_convertor",
-    deploy_link: "https://brilliant-mermaid-d27c80.netlify.app/",
   },
   
 ];

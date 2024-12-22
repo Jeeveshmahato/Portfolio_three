@@ -22,7 +22,7 @@ const Navbar = () => {
           }}
         >
           <img src={img1} alt='logo ' className=' w-9 h-9 object-contain' />
-          <p className=' flex text-[18px] text-white  font-bold cursor-pointer '> Jeevesh &nbsp; <span className=' sm:block hidden'>| Frontend Developer</span> </p>
+          <p className=' flex text-[18px] text-white  font-bold cursor-pointer '> Jeevesh &nbsp; <span className=' sm:block hidden'>| Software Developer</span> </p>
         </Link>
         <ul className=' list-none hidden sm:flex  flex-row gap-10'>
           {navLinks.map((link) => (
