@@ -337,71 +337,71 @@ const projects = [
     source_code_link: "https://github.com/Jeeveshmahato/Swiggy_Clone",
     deploy_link: "https://namaste-react-mu-dun.vercel.app/",
   },
-  {
-    name: "FastX",
-    description:
-      "FastX.com is a website designed to connect customers with reliable and efficient courier services.",
-    tags: [
-      {
-        name: "ReactJs",
-        color: "blue-text-gradient",
-      },
-      {
-        name: "TailwindCSS",
-        color: "pink-text-gradient",
-      },
-    ],
-    image: fastx,
-    source_code_link: "",
-    deploy_link: "https://myfastx.com/",
-  },
-  {
-    name: "Spotify Clone",
-    description:
-      "Developed Spotify clone which is simple, easy user friendly interactive interface features such as play, pause and seek songs that have been added.",
-    tags: [
-      {
-        name: "HTML",
-        color: "orange-text-gradient",
-      },
-      {
-        name: "CSS",
-        color: "blue-text-gradient",
-      },
-      {
-        name: "JavaScript",
-        color: "pink-text-gradient",
-      },
-    ],
+  // {
+  //   name: "FastX",
+  //   description:
+  //     "FastX.com is a website designed to connect customers with reliable and efficient courier services.",
+  //   tags: [
+  //     {
+  //       name: "ReactJs",
+  //       color: "blue-text-gradient",
+  //     },
+  //     {
+  //       name: "TailwindCSS",
+  //       color: "pink-text-gradient",
+  //     },
+  //   ],
+  //   image: fastx,
+  //   source_code_link: "",
+  //   deploy_link: "https://myfastx.com/",
+  // },
+  // {
+  //   name: "Spotify Clone",
+  //   description:
+  //     "Developed Spotify clone which is simple, easy user friendly interactive interface features such as play, pause and seek songs that have been added.",
+  //   tags: [
+  //     {
+  //       name: "HTML",
+  //       color: "orange-text-gradient",
+  //     },
+  //     {
+  //       name: "CSS",
+  //       color: "blue-text-gradient",
+  //     },
+  //     {
+  //       name: "JavaScript",
+  //       color: "pink-text-gradient",
+  //     },
+  //   ],
 
-    image:
-      "https://user-images.githubusercontent.com/93731220/279587656-bd623a51-a3b7-45cd-969f-cc8dd7ae486b.png",
-    source_code_link: "https://github.com/Jeeveshmahato/Spotify-clone",
-    deploy_link: "https://jeeveshmahato.github.io/Spotify-clone/",
-  },
-  {
-    name: "Cynthia ugwu Clone",
-    description:
-      "Develoed a Award-wining website from scratch.Here you will witness the fusion HTML,CSS and Javascript as an awe-inspring forent-end project, adorned with mesmerizing animation powered by GSAP.",
-    tags: [
-      {
-        name: "HTML",
-        color: "orange-text-gradient",
-      },
-      {
-        name: "CSS",
-        color: "blue-text-gradient",
-      },
-      {
-        name: "JavaScript",
-        color: "pink-text-gradient",
-      },
-    ],
-    image:
-      "https://user-images.githubusercontent.com/93731220/279599982-bdaa29a4-3106-4873-b664-d94dc348971d.png",
-    source_code_link: "https://github.com/Jeeveshmahato/cynthiaugwu-Clone",
-    deploy_link: "https://jeeveshmahato.github.io/cynthiaugwu-Clone/",
-  },
+  //   image:
+  //     "https://user-images.githubusercontent.com/93731220/279587656-bd623a51-a3b7-45cd-969f-cc8dd7ae486b.png",
+  //   source_code_link: "https://github.com/Jeeveshmahato/Spotify-clone",
+  //   deploy_link: "https://jeeveshmahato.github.io/Spotify-clone/",
+  // },
+  // {
+  //   name: "Cynthia ugwu Clone",
+  //   description:
+  //     "Develoed a Award-wining website from scratch.Here you will witness the fusion HTML,CSS and Javascript as an awe-inspring forent-end project, adorned with mesmerizing animation powered by GSAP.",
+  //   tags: [
+  //     {
+  //       name: "HTML",
+  //       color: "orange-text-gradient",
+  //     },
+  //     {
+  //       name: "CSS",
+  //       color: "blue-text-gradient",
+  //     },
+  //     {
+  //       name: "JavaScript",
+  //       color: "pink-text-gradient",
+  //     },
+  //   ],
+  //   image:
+  //     "https://user-images.githubusercontent.com/93731220/279599982-bdaa29a4-3106-4873-b664-d94dc348971d.png",
+  //   source_code_link: "https://github.com/Jeeveshmahato/cynthiaugwu-Clone",
+  //   deploy_link: "https://jeeveshmahato.github.io/cynthiaugwu-Clone/",
+  // },
   
 ];
 
