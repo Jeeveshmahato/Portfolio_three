@@ -35,7 +35,7 @@ const NewNavbar = () => {
             Jeevesh &nbsp; <span className='sm:block hidden'>| Software Developer</span>
           </p>
         </Link>
-        <ul className='list-none hidden md:flex flex-row gap-10'>
+        <ul className='list-none hidden lg:flex flex-row gap-10'>
           {navLinks.map((link) => (
             <li
               key={link.id}
@@ -52,7 +52,7 @@ const NewNavbar = () => {
             My Resume
           </li>
         </ul>
-        <div className='md:hidden flex flex-1 justify-end items-center'>
+        <div className='lg:hidden flex flex-1 justify-end items-center'>
           <img src={toggle ? close : menu} alt="menu"
             className='w-[28px] h-[28px] object-contain cursor-pointer'
             onClick={() => setToggle(!toggle)} />
