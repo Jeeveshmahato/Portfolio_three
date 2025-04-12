@@ -310,7 +310,7 @@ const projects = [
     image:
       Netflix,
     source_code_link: "https://github.com/Jeeveshmahato/NetflixGPT",
-    deploy_link: "https://netflix-gpt-nu-gray.vercel.app/",
+    deploy_link: "https://netflix-gpt-jade.vercel.app",
   },
   {
     name: "Swiggy_Clone",
