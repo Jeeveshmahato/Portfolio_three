@@ -56,7 +56,7 @@ const services = [
     icon: web,
   },
   {
-    title: "UI/UX Developer",
+    title: "Project Manager",
     icon: mobile,
   },
   {
@@ -143,11 +143,27 @@ const technologies = [
 ];
 const experiences = [
   {
+    title: "Project Manager",
+    company_name: "Ynaps",
+    icon: "https://ynaps.com/assets/avator/YNAPS.png", 
+    iconBg: "#383E56",
+    date: "December 2024 - Present",
+    points: [
+      "Optimized project workflows and strategic execution, leading to a 20% increase in company profits and a 50% boost in customer satisfaction.",
+      "Facilitated seamless collaboration between clients and development teams, ensuring precise requirement implementation and reducing miscommunication by 30\%.",
+      "Spearheaded complex problem-solving, streamlining processes and accelerating project delivery timelines by 35%.",
+      "Actively contributed to development by writing and optimizing key application features, ensuring high-quality and scalable code deployment.",
+      "Defined and executed strategic roadmaps, increasing product adaptability and engagement by 25% in dynamic market conditions.",
+      "Reviewed and enhanced code structures, debugging critical issues and improving efficiency across multiple project modules.",
+      "Led stakeholder discussions and decision-making processes, strengthening relationships and driving long-term business growth."
+    ],
+  },
+  {
     title: "Frontend Engineer",
     company_name: "Hybrid Utopia",
     icon: hybrid_utopia, 
     iconBg: "#383E56",
-    date: "February 2024 - Present",
+    date: "December 2024 - December 2025",
     points: [
       "Developed interactive wireframes and mock designs for landing pages, enhancing engagement for 5+ new product concepts.",
       "Created fully accessible and responsive interfaces, contributing to a 135% increase in 5-star UX/UI reviews.",
@@ -161,7 +177,7 @@ const experiences = [
     company_name: "Ricoz.io",
     icon: ricoz, 
     iconBg: "#383E56",
-    date: "October 2023 - February 2024",
+    date: "October 2023 - December 2024",
     points: [
       "Developed responsive user interfaces with React.js.",
       "Managed state with Redux, enhancing scalability.",
@@ -169,27 +185,27 @@ const experiences = [
       "Optimized bug detection and documentation, improving app performance by 18%.",
     ],
   },
-  {
-    title: "WordPress Developer",
-    company_name: "Made By Aura",
-    icon: made_by_aura, 
-    iconBg: "#E6DEDD",
-    date: "March 2024 - April 2024",
-    points: [
-      "Delivered polished WordPress sites tailored to organizational goals, excelling in visual design and compliance.",
-      "Specialized in PHP, HTML, CSS, and JavaScript to deliver compliant, user-centered designs with high brand fidelity.",
-    ],
-  },
-  {
-    title: "Junior Web Developer Intern",
-    company_name: "Prabhavati Digital Services Pvt Ltd",
-    icon: prabhavati, 
-    iconBg: "#E6DEDD",
-    date: "November 2023 - January 2024",
-    points: [
-      "Acquired hands-on experience in HTML, CSS, and JavaScript, supporting full-stack development projects with attention to UX/UI principles.",
-    ],
-  },
+  // {
+  //   title: "WordPress Developer",
+  //   company_name: "Made By Aura",
+  //   icon: made_by_aura, 
+  //   iconBg: "#E6DEDD",
+  //   date: "March 2024 - April 2024",
+  //   points: [
+  //     "Delivered polished WordPress sites tailored to organizational goals, excelling in visual design and compliance.",
+  //     "Specialized in PHP, HTML, CSS, and JavaScript to deliver compliant, user-centered designs with high brand fidelity.",
+  //   ],
+  // },
+  // {
+  //   title: "Junior Web Developer Intern",
+  //   company_name: "Prabhavati Digital Services Pvt Ltd",
+  //   icon: prabhavati, 
+  //   iconBg: "#E6DEDD",
+  //   date: "November 2023 - January 2024",
+  //   points: [
+  //     "Acquired hands-on experience in HTML, CSS, and JavaScript, supporting full-stack development projects with attention to UX/UI principles.",
+  //   ],
+  // },
   {
     title: "Mainframe Developer Intern",
     company_name: "Cognizant Technology Solutions",
@@ -310,7 +326,7 @@ const projects = [
     image:
       Netflix,
     source_code_link: "https://github.com/Jeeveshmahato/NetflixGPT",
-    deploy_link: "https://netflix-gpt-jade.vercel.app",
+    deploy_link: "https://netflix-gpt-six-theta.vercel.app/",
   },
   {
     name: "Swiggy_Clone",
