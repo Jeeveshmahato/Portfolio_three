@@ -178,7 +178,7 @@ const Hero = () => {
                 animate={{ opacity: 1 }}
                 transition={{ delay: 1.5 }}
               >
-                Interactive 3D Experience
+               
               </motion.div>
             </div>
           </motion.div>
