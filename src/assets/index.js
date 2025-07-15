@@ -42,6 +42,7 @@ import Netflix from "./Netflix_Clone.png";
 import hybrid_utopia from "./hybrid_utopia.jpg";
 import made_by_aura from "./Made_by_Aura.jpg";
 import prabhavati from "./prabhavati.jpg";
+import maitri from './Maitri_App.png';
 
 export {
   logo,
@@ -83,4 +84,5 @@ export {
   hybrid_utopia,
   made_by_aura,
   prabhavati,
+  maitri,
 };

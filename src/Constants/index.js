@@ -32,7 +32,8 @@ import {
   youtubeClone,
   hybrid_utopia,
   made_by_aura,
-  prabhavati
+  prabhavati,
+  maitri,
 } from "../assets";
 
 export const navLinks = [
@@ -145,23 +146,23 @@ const experiences = [
   {
     title: "Project Manager",
     company_name: "Ynaps",
-    icon: "https://ynaps.com/assets/avator/YNAPS.png", 
+    icon: "https://ynaps.com/assets/avator/YNAPS.png",
     iconBg: "#383E56",
     date: "December 2024 - Present",
     points: [
       "Optimized project workflows and strategic execution, leading to a 20% increase in company profits and a 50% boost in customer satisfaction.",
-      "Facilitated seamless collaboration between clients and development teams, ensuring precise requirement implementation and reducing miscommunication by 30\%.",
+      "Facilitated seamless collaboration between clients and development teams, ensuring precise requirement implementation and reducing miscommunication by 30%.",
       "Spearheaded complex problem-solving, streamlining processes and accelerating project delivery timelines by 35%.",
       "Actively contributed to development by writing and optimizing key application features, ensuring high-quality and scalable code deployment.",
       "Defined and executed strategic roadmaps, increasing product adaptability and engagement by 25% in dynamic market conditions.",
       "Reviewed and enhanced code structures, debugging critical issues and improving efficiency across multiple project modules.",
-      "Led stakeholder discussions and decision-making processes, strengthening relationships and driving long-term business growth."
+      "Led stakeholder discussions and decision-making processes, strengthening relationships and driving long-term business growth.",
     ],
   },
   {
     title: "Frontend Engineer",
     company_name: "Hybrid Utopia",
-    icon: hybrid_utopia, 
+    icon: hybrid_utopia,
     iconBg: "#383E56",
     date: "December 2024 - December 2025",
     points: [
@@ -175,7 +176,7 @@ const experiences = [
   {
     title: "React.js Developer",
     company_name: "Ricoz.io",
-    icon: ricoz, 
+    icon: ricoz,
     iconBg: "#383E56",
     date: "October 2023 - December 2024",
     points: [
@@ -188,7 +189,7 @@ const experiences = [
   // {
   //   title: "WordPress Developer",
   //   company_name: "Made By Aura",
-  //   icon: made_by_aura, 
+  //   icon: made_by_aura,
   //   iconBg: "#E6DEDD",
   //   date: "March 2024 - April 2024",
   //   points: [
@@ -199,7 +200,7 @@ const experiences = [
   // {
   //   title: "Junior Web Developer Intern",
   //   company_name: "Prabhavati Digital Services Pvt Ltd",
-  //   icon: prabhavati, 
+  //   icon: prabhavati,
   //   iconBg: "#E6DEDD",
   //   date: "November 2023 - January 2024",
   //   points: [
@@ -209,7 +210,7 @@ const experiences = [
   {
     title: "Mainframe Developer Intern",
     company_name: "Cognizant Technology Solutions",
-    icon: cognizant, 
+    icon: cognizant,
     iconBg: "#E6DEDD",
     date: "February 2023 - July 2023",
     points: [
@@ -276,11 +277,30 @@ const testimonials = [
 
 const projects = [
   {
+    name: "Maitri App",
+    description:
+      "Maitri is a matchmaking and collaboration platform designed for diverse skill-based communities—from artists and writers to developers and designers. Built with Vite, React, and Tailwind CSS, it enables users to connect meaningfully through profile browsing, connection requests, and real-time chat. With secure authentication, role-based access, and Razorpay-powered premium subscriptions, Maitri fosters intentional networking and project discovery across disciplines.",
+    tags: [
+      { name: "ReactJs", color: "blue-text-gradient" },
+      { name: "TailwindCSS", color: "pink-text-gradient" },
+      { name: "Socket.io", color: "green-text-gradient" },
+      { name: "Redux Toolkit", color: "orange-text-gradient" },
+      { name: "Node.js", color: "yellow-text-gradient" },
+      { name: "MongoDB", color: "purple-text-gradient" },
+      { name: "JWT Auth", color: "red-text-gradient" },
+      { name: "Razorpay", color: "cyan-text-gradient" },
+      { name: "AWS + Nginx", color: "lime-text-gradient" },
+      { name: "Cloudflare", color: "indigo-text-gradient" },
+    ],
+    image: maitri, // Replace this with your actual image import
+    source_code_link: "https://github.com/Jeeveshmahato/Maitri_App", // Add GitHub repo link if ready to share
+    deploy_link: "https://maitri-app-frontend.onrender.com/", // Update with your actual domain
+  },
+  {
     name: "Youtube_Clone",
     description:
       "I used YouTube APIs to display real-time data, optimize search, implement live chat functionality, and handle nth comments. I developed the frontend using ReactJS and TailwindCSS, and utilized Redux for state management.",
     tags: [
-      
       {
         name: "ReactJs",
         color: "blue-text-gradient",
@@ -293,10 +313,8 @@ const projects = [
         name: "TailwindCSS",
         color: "pink-text-gradient",
       },
-      
     ],
-    image:
-      youtubeClone,
+    image: youtubeClone,
     source_code_link: "https://github.com/Jeeveshmahato/youtube_clone",
     deploy_link: "https://youtube-clone-three-ivory.vercel.app/",
   },
@@ -305,7 +323,6 @@ const projects = [
     description:
       "I developed the frontend using ReactJS and TailwindCSS. I also used Google Firebase for user authentication and account management. Additionally, I utilized TMDB APIs to display real-time movies and TV shows. I built a search section to help users find their desired movies and TV shows. Please note that TMDB is blocked by some operators, so users may need to use a VPN or alternative internet providers to access the data.",
     tags: [
-      
       {
         name: "ReactJs",
         color: "blue-text-gradient",
@@ -323,8 +340,7 @@ const projects = [
         color: "orange-text-gradient",
       },
     ],
-    image:
-      Netflix,
+    image: Netflix,
     source_code_link: "https://github.com/Jeeveshmahato/NetflixGPT",
     deploy_link: "https://netflix-gpt-six-theta.vercel.app/",
   },
@@ -333,7 +349,6 @@ const projects = [
     description:
       "I developed the frontend using ReactJS and TailwindCSS. I also used Google Firebase for user authentication and account management. Additionally, I utilized TMDB APIs to display real-time movies and TV shows. I built a search section to help users find their desired movies and TV shows. Please note that TMDB is blocked by some operators, so users may need to use a VPN or alternative internet providers to access the data.",
     tags: [
-      
       {
         name: "ReactJs",
         color: "blue-text-gradient",
@@ -346,31 +361,12 @@ const projects = [
         name: "TailwindCSS",
         color: "pink-text-gradient",
       },
-     
     ],
-    image:
-      swiggyClone,
+    image: swiggyClone,
     source_code_link: "https://github.com/Jeeveshmahato/Swiggy_Clone",
     deploy_link: "https://namaste-react-mu-dun.vercel.app/",
   },
-  // {
-  //   name: "FastX",
-  //   description:
-  //     "FastX.com is a website designed to connect customers with reliable and efficient courier services.",
-  //   tags: [
-  //     {
-  //       name: "ReactJs",
-  //       color: "blue-text-gradient",
-  //     },
-  //     {
-  //       name: "TailwindCSS",
-  //       color: "pink-text-gradient",
-  //     },
-  //   ],
-  //   image: fastx,
-  //   source_code_link: "",
-  //   deploy_link: "https://myfastx.com/",
-  // },
+  
   // {
   //   name: "Spotify Clone",
   //   description:
@@ -418,7 +414,6 @@ const projects = [
   //   source_code_link: "https://github.com/Jeeveshmahato/cynthiaugwu-Clone",
   //   deploy_link: "https://jeeveshmahato.github.io/cynthiaugwu-Clone/",
   // },
-  
 ];
 
 export { services, technologies, experiences, testimonials, projects };
