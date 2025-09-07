@@ -29,11 +29,11 @@ import adobe from "./tech/Abode.png";
 
 import ricoz from "./company/Ricoz.jpg";
 import cognizant from "./company/Cognizant.png";
-
-import carrent from "./carrent.png";
-import jobit from "./jobit.png";
-import tripguide from "./tripguide.png";
-import fastx from "./company/Fastx.png";
+import position2 from './Position2.jpg'
+// import carrent from "./carrent.png";
+// import jobit from "./jobit.png";
+// import tripguide from "./tripguide.png";
+// import fastx from "./company/Fastx.png";
 import kunal from "./Kunal.jpeg";
 import rajesh from "./Rajesh.jpeg";
 import swiggyClone from "./Swiggy_Clone.png";
@@ -43,6 +43,7 @@ import hybrid_utopia from "./hybrid_utopia.jpg";
 import made_by_aura from "./Made_by_Aura.jpg";
 import prabhavati from "./prabhavati.jpg";
 import maitri from './Maitri_App.png';
+import getaitool from './getAITool.webp'
 
 export {
   logo,
@@ -65,13 +66,15 @@ export {
   tailwind,
   nodejs,
   mongodb,
-  fastx,
+  // fastx,
   threejs,
-  carrent,
-  jobit,
-  tripguide,
+  // carrent,
+  // jobit,
+  // tripguide,
+  getaitool,
   ricoz,
   cognizant,
+  position2,
   cobol,
   wordpress,
   canva,

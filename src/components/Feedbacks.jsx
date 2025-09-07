@@ -100,7 +100,7 @@ const Feedbacks = () => {
 
         <motion.div 
           variants={fadeIn("up", "spring", 0.3, 1)}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 justify-center"
+          className="flex justify-between gap-8"
         >
           {testimonials.map((testimonial, index) => (
             <FeedbackCard key={testimonial.name} index={index} {...testimonial} />

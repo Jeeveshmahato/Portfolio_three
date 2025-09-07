@@ -13,9 +13,10 @@ import {
   figma,
   nodejs,
   mongodb,
-  carrent,
-  jobit,
-  tripguide,
+  // carrent,
+  // jobit,
+  // tripguide,
+  getaitool,
   threejs,
   ricoz,
   cognizant,
@@ -26,7 +27,7 @@ import {
   kunal,
   rajesh,
   adobe,
-  fastx,
+  // fastx,
   swiggyClone,
   Netflix,
   youtubeClone,
@@ -34,7 +35,20 @@ import {
   made_by_aura,
   prabhavati,
   maitri,
+  position2,
 } from "../assets";
+import { Code2, Workflow, Cpu, Palette } from "lucide-react";
+import {
+  Database,
+  Server,
+  // github,
+  // thub,
+  Box,
+  Layers,
+  Cloud,
+  Code,
+  Terminal,
+} from "lucide-react";
 
 export const navLinks = [
   {
@@ -53,102 +67,74 @@ export const navLinks = [
 
 const services = [
   {
-    title: "Web Developer",
-    icon: web,
+    title: "Full Stack Web Development",
+    icon: Code2,
+    description:
+      "I build complete websites and web apps — from what users see to the systems running in the background.",
   },
   {
-    title: "Project Manager",
-    icon: mobile,
+    title: "Project Leadership",
+    icon: Workflow,
+    description:
+      "I plan, organize, and guide projects so teams deliver high-quality results on time.",
   },
   {
-    title: "Backend Developer",
-    icon: backend,
+    title: "Backend & API Development",
+    icon: Cpu,
+    description:
+      "I create the secure, powerful systems and APIs that keep apps running fast and reliably.",
   },
   {
-    title: "Frontend Developer",
-    icon: creator,
+    title: "Frontend & User Experience",
+    icon: Palette,
+    description:
+      "I design smooth, modern interfaces so users enjoy fast, intuitive, and beautiful experiences.",
   },
 ];
 
 const technologies = [
-  {
-    name: "HTML 5",
-    icon: html,
-  },
-  {
-    name: "CSS 3",
-    icon: css,
-  },
-  {
-    name: "JavaScript",
-    icon: javascript,
-  },
-
-  {
-    name: "React JS",
-    icon: reactjs,
-  },
-  {
-    name: "NextJS",
-    icon: nextjs,
-  },
-  {
-    name: "Redux Toolkit",
-    icon: redux,
-  },
-  {
-    name: "Tailwind CSS",
-    icon: tailwind,
-  },
-  {
-    name: "Node JS",
-    icon: nodejs,
-  },
-  {
-    name: "MongoDB",
-    icon: mongodb,
-  },
-  {
-    name: "Three JS",
-    icon: threejs,
-  },
-  {
-    name: "Git",
-    icon: git,
-  },
-
-  // {
-  //   name: "docker",
-  //   icon: docker,
-  // },
-  // {
-  //   name: "Cobol",
-  //   icon: cobol,
-  // },
-  {
-    name: "Figma",
-    icon: figma,
-  },
-  {
-    name: "Adobe",
-    icon: adobe,
-  },
-  // {
-  //   name: "Canva",
-  //   icon: canva,
-  // },
-  {
-    name: "Wordpress",
-    icon: wordpress,
-  },
+  { name: "HTML 5", icon: html },
+  { name: "CSS 3", icon: css },
+  { name: "JavaScript", icon: javascript },
+  { name: "TypeScript", icon: Code },
+  { name: "React JS", icon: reactjs },
+  { name: "NextJS", icon: nextjs },
+  { name: "Redux Toolkit", icon: redux },
+  { name: "Tailwind CSS", icon: tailwind },
+  { name: "Node JS", icon: nodejs },
+  { name: "Express.js", icon: Server },
+  { name: "MongoDB", icon: mongodb },
+  { name: "GraphQL", icon: Layers },
+  { name: "Docker", icon: Box },
+  { name: "AWS", icon: Cloud },
+  { name: "Git", icon: git },
+  { name: "Figma", icon: figma },
+  { name: "Adobe", icon: adobe },
+  { name: "WordPress", icon: wordpress },
 ];
 const experiences = [
+  {
+    title: "UI Developer",
+    company_name: "Position²",
+    icon: position2,
+    iconBg: "#383E56",
+    date: "July 2025 - Present",
+    points: [
+      "Engineered high-performance, responsive user interfaces using React.js, Tailwind CSS, and Redux Toolkit, improving load times and user engagement by 40%.",
+      "Collaborated with cross-functional teams to translate complex business requirements into intuitive UI components, reducing revision cycles by 25%.",
+      "Integrated RESTful APIs and GraphQL endpoints with dynamic frontend views, enhancing data flow and real-time interactivity across dashboards.",
+      "Led UI/UX audits and implemented accessibility best practices (WCAG), increasing usability scores and compliance across client-facing platforms.",
+      "Optimized component architecture for scalability and maintainability, reducing technical debt and improving developer onboarding speed.",
+      "Utilized Git workflows and CI/CD pipelines to streamline deployment processes, ensuring consistent delivery across staging and production environments.",
+      "Actively participated in client demos and feedback sessions, refining UI deliverables to align with branding and performance expectations.",
+    ],
+  },
   {
     title: "Project Manager",
     company_name: "Ynaps",
     icon: "https://ynaps.com/assets/avator/YNAPS.png",
     iconBg: "#383E56",
-    date: "December 2024 - Present",
+    date: "December 2024 - July 2025",
     points: [
       "Optimized project workflows and strategic execution, leading to a 20% increase in company profits and a 50% boost in customer satisfaction.",
       "Facilitated seamless collaboration between clients and development teams, ensuring precise requirement implementation and reducing miscommunication by 30%.",
@@ -164,7 +150,7 @@ const experiences = [
     company_name: "Hybrid Utopia",
     icon: hybrid_utopia,
     iconBg: "#383E56",
-    date: "December 2024 - December 2025",
+    date: "July 2023 - December 2025",
     points: [
       "Developed interactive wireframes and mock designs for landing pages, enhancing engagement for 5+ new product concepts.",
       "Created fully accessible and responsive interfaces, contributing to a 135% increase in 5-star UX/UI reviews.",
@@ -173,19 +159,19 @@ const experiences = [
       "Conducted code reviews and rigorous testing, increasing feature stability and donor contributions by 12%.",
     ],
   },
-  {
-    title: "React.js Developer",
-    company_name: "Ricoz.io",
-    icon: ricoz,
-    iconBg: "#383E56",
-    date: "October 2023 - December 2024",
-    points: [
-      "Developed responsive user interfaces with React.js.",
-      "Managed state with Redux, enhancing scalability.",
-      "Worked alongside senior developers and interns to incorporate collaborative feedback into project development.",
-      "Optimized bug detection and documentation, improving app performance by 18%.",
-    ],
-  },
+  // {
+  //   title: "React.js Developer",
+  //   company_name: "Ricoz.io",
+  //   icon: ricoz,
+  //   iconBg: "#383E56",
+  //   date: "October 2023 - December 2024",
+  //   points: [
+  //     "Developed responsive user interfaces with React.js.",
+  //     "Managed state with Redux, enhancing scalability.",
+  //     "Worked alongside senior developers and interns to incorporate collaborative feedback into project development.",
+  //     "Optimized bug detection and documentation, improving app performance by 18%.",
+  //   ],
+  // },
   // {
   //   title: "WordPress Developer",
   //   company_name: "Made By Aura",
@@ -255,7 +241,7 @@ const testimonials = [
     designation: "CEO",
     company: "Cognizant Technology Solutions",
     image:
-      "https://cognizant.scene7.com/is/image/cognizant/ravi-kumar-s-cognizant?fmt=png-alpha&",
+      "https://cognizant.scene7.com/is/image/cognizant/ravi-kumar-s-cognizant",
   },
   {
     testimonial:
@@ -296,6 +282,27 @@ const projects = [
     source_code_link: "https://github.com/Jeeveshmahato/Maitri_App", // Add GitHub repo link if ready to share
     deploy_link: "https://maitri-app-frontend.onrender.com/", // Update with your actual domain
   },
+  {
+    name: "Get Me AI Tool",
+    description:
+      "Get Me AI Tool is a full-stack directory platform for discovering and sharing AI-powered tools. Built with Vite, React, Tailwind CSS, and Redux Toolkit, it enables users to browse, submit, and manage AI tools with rich metadata and image previews. The backend, powered by Node.js, Express, and MongoDB, features secure JWT authentication, RESTful APIs, and CORS-protected communication. The app is mobile-responsive, deployed on Render and Vercel, and optimized for seamless client-side routing and real-time updates.",
+    tags: [
+      { name: "ReactJs", color: "blue-text-gradient" },
+      { name: "TailwindCSS", color: "pink-text-gradient" },
+      { name: "Redux Toolkit", color: "orange-text-gradient" },
+      { name: "Node.js", color: "yellow-text-gradient" },
+      { name: "Express.js", color: "green-text-gradient" },
+      { name: "MongoDB", color: "purple-text-gradient" },
+      { name: "JWT Auth", color: "red-text-gradient" },
+      { name: "Render", color: "cyan-text-gradient" },
+      { name: "Vercel", color: "lime-text-gradient" },
+      { name: "REST API", color: "indigo-text-gradient" },
+    ],
+    image: getaitool, // Replace with your actual image import
+    source_code_link: "https://github.com/Jeeveshmahato/AI-website", // Update if repo name changes
+    deploy_link: "https://ai-website-frontend.onrender.com/", // Your live frontend URL
+  },
+
   {
     name: "Youtube_Clone",
     description:
@@ -366,7 +373,7 @@ const projects = [
     source_code_link: "https://github.com/Jeeveshmahato/Swiggy_Clone",
     deploy_link: "https://namaste-react-mu-dun.vercel.app/",
   },
-  
+
   // {
   //   name: "Spotify Clone",
   //   description:

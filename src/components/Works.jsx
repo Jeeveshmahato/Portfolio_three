@@ -189,7 +189,7 @@ const Works = () => {
       {/* Projects grid with staggered entrance */}
       <motion.div 
         variants={fadeIn("up", "spring", 0.3, 1)}
-        className="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center"
+        className="grid grid-cols-1 md:grid-cols-2 mt- lg:grid-cols-3 gap-6 mt-10 max-w-6xl mx-auto"
       >
         {projects.map((project, index) => (
           <ProjectCard key={`project-${index}`} index={index} {...project} />

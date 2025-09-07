@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
-import { styles } from "../styles";
+// import { styles } from "../styles";
 import { menu, close } from "../assets";
 import img1 from "../assets/logo.png";
 import { navLinks } from "../Constants";
@@ -13,7 +13,7 @@ const NewNavbar = () => {
   const handleDownload = () => {
     const link = document.createElement("a");
     link.href =
-      "https://drive.google.com/file/d/1g0Fsfv-aZ9kTHvx6PL7hmGdE6ClmbKrQ/view?usp=sharing"; // Replace with the path to your resume file
+      "https://drive.google.com/file/d/1jeGPP9ifB_9VEUpDfNfio7nU2DMgRQKf/view"; // Replace with the path to your resume file
     link.setAttribute("download", "Jeevesh.cv");
     link.setAttribute("target", "_blank");
     document.body.appendChild(link);
@@ -23,9 +23,9 @@ const NewNavbar = () => {
 
   return (
     <nav
-      className={`${styles.paddingX} w-full flex items-center py-5 fixed top-0 z-20 bg-primary`}
+      className={`w-full max-w-[1400px] flex items-center py-5 fixed top-0 z-20 bg-primary`}
     >
-      <div className="w-full flex justify-between items-center max-w-7xl mx-auto">
+      <div className="flex w-full justify-between items-center">
         <Link
           to="/"
           className="flex items-center gap-2"
