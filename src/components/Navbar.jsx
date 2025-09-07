@@ -23,7 +23,7 @@ const NewNavbar = () => {
 
   return (
     <nav
-      className={`w-full max-w-[1400px] flex items-center py-5 fixed top-0 z-20 bg-primary`}
+      className={`w-full max-w-[1400px] flex items-center py-5 fixed top-0 z-[9999] bg-primary`}
     >
       <div className="flex w-full justify-between items-center">
         <Link

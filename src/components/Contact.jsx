@@ -3,7 +3,12 @@ import { motion } from "framer-motion";
 import { sectionStyles } from "./Styles";
 import { EarthCanvas } from "./canvas";
 import { SectionWrapper } from "../hoc";
-import { slideIn, staggerContainer, textVariant, fadeIn } from "../utils/motion"; // Added fadeIn import
+import {
+  slideIn,
+  staggerContainer,
+  textVariant,
+  fadeIn,
+} from "../utils/motion"; // Added fadeIn import
 
 const Contact = () => {
   const [form, setForm] = useState({
@@ -15,7 +20,7 @@ const Contact = () => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setForm(prev => ({ ...prev, [name]: value }));
+    setForm((prev) => ({ ...prev, [name]: value }));
   };
 
   const handleSubmit = (e) => {
@@ -23,14 +28,15 @@ const Contact = () => {
     setLoading(true);
 
     // Format message for WhatsApp
-    const message = `New Contact From Portfolio:%0A%0A` +
-                   `*Name:* ${form.name}%0A` +
-                   `*Email:* ${form.email}%0A` +
-                   `*Message:* ${form.message}`;
+    const message =
+      `New Contact From Portfolio:%0A%0A` +
+      `*Name:* ${form.name}%0A` +
+      `*Email:* ${form.email}%0A` +
+      `*Message:* ${form.message}`;
 
     // Open WhatsApp with prefilled message
     window.open(`https://wa.me/916203534938?text=${message}`, "_blank");
-    
+
     setForm({ name: "", email: "", message: "" });
     setLoading(false);
   };
@@ -45,7 +51,9 @@ const Contact = () => {
     >
       <motion.div variants={textVariant()} className="text-center">
         <p className={sectionStyles.sectionSubText}>Get in touch</p>
-        <h2 className="text-4xl sm:text-5xl font-bold text-white mb-12">Contact.</h2>
+        <h2 className="text-4xl sm:text-5xl font-bold text-white mb-12">
+          Contact.
+        </h2>
       </motion.div>
 
       <div className="xl:mt-12 flex xl:flex-row flex-col-reverse gap-10">
@@ -55,7 +63,7 @@ const Contact = () => {
           className={`${sectionStyles.card} flex-[0.75]`}
         >
           <form onSubmit={handleSubmit} className="mt-6 flex flex-col gap-6">
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
@@ -73,7 +81,7 @@ const Contact = () => {
               />
             </motion.div>
 
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.1 }}
@@ -91,13 +99,15 @@ const Contact = () => {
               />
             </motion.div>
 
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.2 }}
               className="flex flex-col"
             >
-              <label className="text-white font-medium mb-2">Your Message*</label>
+              <label className="text-white font-medium mb-2">
+                Your Message*
+              </label>
               <textarea
                 rows={5}
                 name="message"
@@ -121,13 +131,31 @@ const Contact = () => {
             >
               {loading ? (
                 <span className="flex items-center justify-center gap-2">
-                  <svg className="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                  <svg
+                    className="animate-spin h-5 w-5 text-white"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                  >
+                    <circle
+                      className="opacity-25"
+                      cx="12"
+                      cy="12"
+                      r="10"
+                      stroke="currentColor"
+                      strokeWidth="4"
+                    ></circle>
+                    <path
+                      className="opacity-75"
+                      fill="currentColor"
+                      d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                    ></path>
                   </svg>
                   Sending...
                 </span>
-              ) : "Send via WhatsApp"}
+              ) : (
+                "Send via WhatsApp"
+              )}
             </motion.button>
           </form>
         </motion.div>

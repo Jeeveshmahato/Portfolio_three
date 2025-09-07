@@ -14,9 +14,9 @@ import {
 const App = () => {
   return (
     <BrowserRouter>
-      <div className=" relative z-0 bg-primary max-w-7xl mx-auto flex flex-col items-center">
+      <div className=" relative z-[9999999] bg-primary max-w-7xl mx-auto flex flex-col items-center">
         {/* <div className=" sm:px-16 px-6 sm:py-16 py-10 max-w-7xl mx-auto relative z-0"> */}
-          <Navbar />
+        <Navbar />
         {/* </div> */}
         <Hero />
         <About />
@@ -24,12 +24,11 @@ const App = () => {
         <Tech />
         <Works />
         <Feedbacks />
-        
       </div>
-      <div className=" relative z-0">
-          <Contact />
-          <StarsCanvas />
-        </div>
+      <div className=" relative -z-0">
+        <Contact />
+        <StarsCanvas />
+      </div>
     </BrowserRouter>
   );
 };
