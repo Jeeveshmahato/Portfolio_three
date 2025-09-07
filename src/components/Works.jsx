@@ -52,33 +52,32 @@ const ProjectCard = ({
             transition={{ duration: 0.5 }}
           />
           
-          {/* Floating action buttons */}
-          <motion.div 
-            className="absolute inset-0 flex justify-end items-start gap-3 m-3"
-            initial={{ opacity: 0, y: 20 }}
-            whileHover={{ opacity: 1, y: 0 }}
-            transition={{ staggerChildren: 0.1 }}
+          {/* Floating action buttons: always visible on mobile/tablet, on hover for desktop */}
+          {/*
+            Action icons are positioned absolutely in the project image area. On desktop, they fade in on hover (using group-hover:opacity-100). On mobile/tablet, they are always visible (opacity-100, no hover needed).
+            To change their position or behavior, edit the parent 'absolute' div and the responsive classes below.
+            The onClick handlers open the respective links in a new tab.
+          */}
+          <div
+            className="absolute inset-0 flex justify-end items-start gap-3 m-3 opacity-100 lg:opacity-0 lg:group-hover:opacity-100 transition-opacity duration-300"
           >
-            <motion.div
-              whileHover={{ scale: 1.2, rotate: 8 }}
-              whileTap={{ scale: 0.9 }}
+            <div
               onClick={() => window.open(source_code_link, "_blank")}
-              className="bg-gradient-to-br from-cyan-500 to-blue-600 w-10 h-10 rounded-full flex justify-center items-center cursor-pointer shadow-xl backdrop-blur-sm"
+              className="bg-gradient-to-br from-cyan-500 to-blue-600 w-10 h-10 rounded-full flex justify-center items-center cursor-pointer shadow-xl backdrop-blur-sm hover:scale-110 active:scale-95 transition-transform"
+              title="View Source Code"
             >
               <img src={github} alt="source code" className="w-5 h-5" />
-            </motion.div>
-            
+            </div>
             {deploy_link && (
-              <motion.div
-                whileHover={{ scale: 1.2, rotate: -8 }}
-                whileTap={{ scale: 0.9 }}
+              <div
                 onClick={() => window.open(deploy_link, "_blank")}
-                className="bg-gradient-to-br from-green-500 to-emerald-600 w-10 h-10 rounded-full flex justify-center items-center cursor-pointer shadow-xl backdrop-blur-sm"
+                className="bg-gradient-to-br from-green-500 to-emerald-600 w-10 h-10 rounded-full flex justify-center items-center cursor-pointer shadow-xl backdrop-blur-sm hover:scale-110 active:scale-95 transition-transform"
+                title="View Live Demo"
               >
                 <img src={deploy} alt="Deploy Link" className="w-5 h-5" />
-              </motion.div>
+              </div>
             )}
-          </motion.div>
+          </div>
         </motion.div>
 
         {/* Content with staggered animations */}

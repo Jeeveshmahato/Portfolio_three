@@ -51,7 +51,7 @@ const Hero = () => {
 
       {/* Content Container */}
       <div
-        className={` w-full px-28 rounded-lg h-fit-content flex flex-col justify-center pt-20 pb-32`}
+        className={` w-full px-6 lg:px-28 rounded-lg h-fit-content flex flex-col justify-center pt-20 pb-32`}
       >
         <div className="flex flex-col lg:flex-row items-center  lg:gap-[120px] gap-[10px] w-full">
           {/* Left Column - Content */}

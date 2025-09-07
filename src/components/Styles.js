@@ -5,5 +5,5 @@ export const sectionStyles = {
   sectionContent: "mt-0",
   card: "bg-gradient-to-br from-[#1a1a2e] to-[#16213e] p-6 rounded-2xl border border-gray-800 shadow-xl",
   inputField: "bg-gray-900/50 py-3 px-4 placeholder-gray-500 text-white rounded-lg outline-none border border-gray-700 focus:border-cyan-400 transition-all",
-  buttonPrimary: "bg-gradient-to-r from-cyan-500 to-blue-600 py-3 px-8 rounded-lg text-white font-bold shadow-lg hover:shadow-cyan-500/20 transition-all"
+  buttonPrimary: "bg-gradient-to-r from-cyan-500 to-blue-600 py-3 px-[16px] lg:px-8 rounded-lg text-white font-bold shadow-lg hover:shadow-cyan-500/20 transition-all"
 };
