@@ -10,6 +10,9 @@
     "preview": "vite preview",
     "deploy": "gh-pages -d dist"
   },
+  "engines": {
+    "node": "22.x"
+  },
   "dependencies": {
     "@emailjs/browser": "^4.1.0",
     "@react-three/drei": "^9.122.0",
