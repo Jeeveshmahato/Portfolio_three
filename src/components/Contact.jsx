@@ -67,7 +67,7 @@ const Contact = () => {
     const cleanEmail = sanitizeInput(form.email);
     const cleanMessage = sanitizeInput(form.message);
 
-    const whatsappNumber = import.meta.env.VITE_WHATSAPP_NUMBER;
+    const whatsappNumber = import.meta.env.VITE_WHATSAPP_NUMBER || "916203534938";
     if (!whatsappNumber) {
       setErrors({ message: "Contact configuration error. Please try again later." });
       setLoading(false);
