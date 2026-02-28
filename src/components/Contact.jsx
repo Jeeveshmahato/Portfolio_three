@@ -3,12 +3,15 @@ import { motion } from "framer-motion";
 import { sectionStyles } from "./Styles";
 import { EarthCanvas } from "./canvas";
 import { SectionWrapper } from "../hoc";
-import {
-  slideIn,
-  staggerContainer,
-  textVariant,
-  fadeIn,
-} from "../utils/motion"; // Added fadeIn import
+import { slideIn, staggerContainer, textVariant } from "../utils/motion";
+
+const sanitizeInput = (str) => {
+  return str.replace(/<[^>]*>/g, "").trim();
+};
+
+const isValidEmail = (email) => {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+};
 
 const Contact = () => {
   const [form, setForm] = useState({
@@ -17,28 +20,73 @@ const Contact = () => {
     message: "",
   });
   const [loading, setLoading] = useState(false);
+  const [errors, setErrors] = useState({});
+  const [submitted, setSubmitted] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setForm((prev) => ({ ...prev, [name]: value }));
+    if (errors[name]) {
+      setErrors((prev) => ({ ...prev, [name]: "" }));
+    }
+  };
+
+  const validate = () => {
+    const newErrors = {};
+    const cleanName = sanitizeInput(form.name);
+    const cleanEmail = sanitizeInput(form.email);
+    const cleanMessage = sanitizeInput(form.message);
+
+    if (!cleanName || cleanName.length < 2) {
+      newErrors.name = "Please enter a valid name (min 2 characters)";
+    }
+    if (cleanName.length > 100) {
+      newErrors.name = "Name is too long (max 100 characters)";
+    }
+    if (!cleanEmail || !isValidEmail(cleanEmail)) {
+      newErrors.email = "Please enter a valid email address";
+    }
+    if (!cleanMessage || cleanMessage.length < 10) {
+      newErrors.message = "Message must be at least 10 characters";
+    }
+    if (cleanMessage.length > 2000) {
+      newErrors.message = "Message is too long (max 2000 characters)";
+    }
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (!validate()) return;
+
     setLoading(true);
 
-    // Format message for WhatsApp
-    const message =
-      `New Contact From Portfolio:%0A%0A` +
-      `*Name:* ${form.name}%0A` +
-      `*Email:* ${form.email}%0A` +
-      `*Message:* ${form.message}`;
+    const cleanName = sanitizeInput(form.name);
+    const cleanEmail = sanitizeInput(form.email);
+    const cleanMessage = sanitizeInput(form.message);
 
-    // Open WhatsApp with prefilled message
-    window.open(`https://wa.me/916203534938?text=${message}`, "_blank");
+    const whatsappNumber = import.meta.env.VITE_WHATSAPP_NUMBER;
+    if (!whatsappNumber) {
+      setErrors({ message: "Contact configuration error. Please try again later." });
+      setLoading(false);
+      return;
+    }
+
+    const text = encodeURIComponent(
+      `New Contact From Portfolio:\n\nName: ${cleanName}\nEmail: ${cleanEmail}\nMessage: ${cleanMessage}`
+    );
+
+    window.open(`https://wa.me/${whatsappNumber}?text=${text}`, "_blank", "noopener,noreferrer");
 
     setForm({ name: "", email: "", message: "" });
-    setLoading(false);
+    setSubmitted(true);
+
+    setTimeout(() => {
+      setLoading(false);
+      setTimeout(() => setSubmitted(false), 3000);
+    }, 1000);
   };
 
   return (
@@ -52,7 +100,7 @@ const Contact = () => {
       <motion.div variants={textVariant()} className="text-center">
         <p className={sectionStyles.sectionSubText}>Get in touch</p>
         <h2 className="text-4xl sm:text-5xl font-bold text-white mb-12">
-          Contact.
+          Contact<span className="text-cyan-400">.</span>
         </h2>
       </motion.div>
 
@@ -60,25 +108,46 @@ const Contact = () => {
         {/* Form Section */}
         <motion.div
           variants={slideIn("left", "tween", 0.2, 1)}
-          className={`${sectionStyles.card} flex-[0.75]`}
+          className={`${sectionStyles.card} flex-[0.75] relative overflow-hidden`}
         >
-          <form onSubmit={handleSubmit} className="mt-6 flex flex-col gap-6">
+          {/* Decorative floating shapes */}
+          <div className="absolute -top-20 -right-20 w-40 h-40 rounded-full bg-cyan-500/5 blur-2xl" />
+          <div className="absolute -bottom-20 -left-20 w-40 h-40 rounded-full bg-blue-500/5 blur-2xl" />
+
+          {/* Success Toast */}
+          {submitted && (
+            <motion.div
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              className="absolute top-4 left-4 right-4 bg-emerald-500/20 border border-emerald-500/30 text-emerald-300 px-4 py-3 rounded-xl text-sm text-center backdrop-blur-sm z-10"
+            >
+              Message sent successfully! Redirecting to WhatsApp...
+            </motion.div>
+          )}
+
+          <form onSubmit={handleSubmit} className="mt-6 flex flex-col gap-6 relative z-[1]">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
-              className="flex flex-col"
+              className="flex flex-col relative"
             >
-              <label className="text-white font-medium mb-2">Your Name*</label>
+              <label className="text-white font-medium mb-2 text-sm">Your Name</label>
               <input
                 type="text"
                 name="name"
                 value={form.name}
                 onChange={handleChange}
-                className={sectionStyles.inputField}
-                placeholder="Your name"
-                required
+                maxLength={100}
+                className={`${sectionStyles.inputField} ${
+                  errors.name ? "border-red-400" : ""
+                } focus:shadow-[0_0_15px_rgba(34,211,238,0.1)]`}
+                placeholder="John Doe"
               />
+              {errors.name && (
+                <span className="text-red-400 text-xs mt-1">{errors.name}</span>
+              )}
             </motion.div>
 
             <motion.div
@@ -87,16 +156,21 @@ const Contact = () => {
               transition={{ duration: 0.5, delay: 0.1 }}
               className="flex flex-col"
             >
-              <label className="text-white font-medium mb-2">Your Email*</label>
+              <label className="text-white font-medium mb-2 text-sm">Your Email</label>
               <input
                 type="email"
                 name="email"
                 value={form.email}
                 onChange={handleChange}
-                className={sectionStyles.inputField}
-                placeholder="Your email"
-                required
+                maxLength={200}
+                className={`${sectionStyles.inputField} ${
+                  errors.email ? "border-red-400" : ""
+                } focus:shadow-[0_0_15px_rgba(34,211,238,0.1)]`}
+                placeholder="john@example.com"
               />
+              {errors.email && (
+                <span className="text-red-400 text-xs mt-1">{errors.email}</span>
+              )}
             </motion.div>
 
             <motion.div
@@ -105,25 +179,35 @@ const Contact = () => {
               transition={{ duration: 0.5, delay: 0.2 }}
               className="flex flex-col"
             >
-              <label className="text-white font-medium mb-2">
-                Your Message*
+              <label className="text-white font-medium mb-2 text-sm">
+                Your Message
               </label>
               <textarea
                 rows={5}
                 name="message"
                 value={form.message}
                 onChange={handleChange}
-                className={sectionStyles.inputField}
-                placeholder="Your message"
-                required
+                maxLength={2000}
+                className={`${sectionStyles.inputField} resize-none ${
+                  errors.message ? "border-red-400" : ""
+                } focus:shadow-[0_0_15px_rgba(34,211,238,0.1)]`}
+                placeholder="Tell me about your project..."
               />
+              <div className="flex justify-between mt-1">
+                {errors.message && (
+                  <span className="text-red-400 text-xs">{errors.message}</span>
+                )}
+                <span className="text-gray-500 text-xs ml-auto">
+                  {form.message.length}/2000
+                </span>
+              </div>
             </motion.div>
 
             <motion.button
               type="submit"
-              className={sectionStyles.buttonPrimary}
-              whileHover={{ scale: 1.03 }}
-              whileTap={{ scale: 0.97 }}
+              className={`${sectionStyles.buttonPrimary} disabled:opacity-50 disabled:cursor-not-allowed`}
+              whileHover={{ scale: loading ? 1 : 1.03 }}
+              whileTap={{ scale: loading ? 1 : 0.97 }}
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               transition={{ delay: 0.3 }}
@@ -144,12 +228,12 @@ const Contact = () => {
                       r="10"
                       stroke="currentColor"
                       strokeWidth="4"
-                    ></circle>
+                    />
                     <path
                       className="opacity-75"
                       fill="currentColor"
                       d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-                    ></path>
+                    />
                   </svg>
                   Sending...
                 </span>

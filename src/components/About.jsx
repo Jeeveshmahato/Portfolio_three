@@ -1,88 +1,54 @@
-import React from "react";
-import { Tilt } from "react-tilt";
+import React, { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import { sectionStyles } from "./Styles";
 import { services } from "../Constants";
 import { SectionWrapper } from "../hoc";
 import { fadeIn, textVariant, staggerContainer } from "../utils/motion";
 
-const ServiceCard = ({ index, title, icon }) => (
-  <Tilt
-    className="w-full"
-    options={{
-      max: 15,
-      scale: 1.05,
-      speed: 500,
-      glare: true,
-      "max-glare": 0.2,
-    }}
-  >
-    <motion.div
-      variants={fadeIn("right", "spring", index * 0.2, 0.75)}
-      className="w-full rounded-xl shadow-lg"
-      whileHover={{
-        y: -8,
-        transition: {
-          type: "spring",
-          stiffness: 400,
-          damping: 10,
-        },
-      }}
-    >
-      <div className="relative bg-gradient-to-br from-[#1a1a2e] to-[#16213e] rounded-xl py-8 px-6 min-h-[280px] flex flex-col justify-center items-center overflow-hidden border border-gray-800 group">
-        {/* Animated background elements */}
-        <motion.div
-          className="absolute -bottom-10 -left-10 w-32 h-32 bg-cyan-500 rounded-full filter blur-3xl opacity-20"
-          animate={{
-            x: [0, 20, 0],
-            y: [0, 15, 0],
-          }}
-          transition={{
-            duration: 8,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-        />
-        <motion.div
-          className="absolute -top-10 -right-10 w-32 h-32 bg-purple-500 rounded-full filter blur-3xl opacity-20"
-          animate={{
-            x: [0, -15, 0],
-            y: [0, -10, 0],
-          }}
-          transition={{
-            duration: 10,
-            repeat: Infinity,
-            ease: "easeInOut",
-            delay: 2,
-          }}
-        />
+const accentColors = [
+  { from: "from-cyan-500", to: "to-blue-600", text: "text-cyan-400", shadow: "shadow-cyan-500/10" },
+  { from: "from-purple-500", to: "to-pink-600", text: "text-purple-400", shadow: "shadow-purple-500/10" },
+  { from: "from-amber-500", to: "to-orange-600", text: "text-amber-400", shadow: "shadow-amber-500/10" },
+  { from: "from-emerald-500", to: "to-teal-600", text: "text-emerald-400", shadow: "shadow-emerald-500/10" },
+];
 
-        {/* Icon with floating animation */}
-        <motion.div
-          className="mb-6 p-4 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-2xl shadow-lg"
-          animate={{
-            y: [0, -8, 0],
-            rotate: [0, 5, -5, 0],
-          }}
-          transition={{
-            duration: 6,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-        >
-          <img src={icon} alt={title} className="w-12 h-12 object-contain" />
-        </motion.div>
+const AnimatedCounter = ({ target, suffix = "" }) => {
+  const [count, setCount] = useState(0);
+  const ref = useRef(null);
+  const [hasAnimated, setHasAnimated] = useState(false);
 
-        <h3 className="text-white text-xl font-bold text-center bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-blue-400">
-          {title}
-        </h3>
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !hasAnimated) {
+          setHasAnimated(true);
+          let start = 0;
+          const duration = 1500;
+          const startTime = performance.now();
 
-        {/* Interactive border effect */}
-        <div className="absolute inset-0 rounded-xl border-2 border-transparent group-hover:border-cyan-400/50 transition-all duration-300" />
-      </div>
-    </motion.div>
-  </Tilt>
-);
+          const animate = (currentTime) => {
+            const elapsed = currentTime - startTime;
+            const progress = Math.min(elapsed / duration, 1);
+            const eased = 1 - Math.pow(1 - progress, 3);
+            setCount(Math.floor(eased * target));
+            if (progress < 1) requestAnimationFrame(animate);
+          };
+          requestAnimationFrame(animate);
+        }
+      },
+      { threshold: 0.5 }
+    );
+
+    if (ref.current) observer.observe(ref.current);
+    return () => observer.disconnect();
+  }, [target, hasAnimated]);
+
+  return (
+    <span ref={ref} className="text-3xl sm:text-4xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-blue-500">
+      {count}{suffix}
+    </span>
+  );
+};
 
 const About = () => {
   return (
@@ -95,94 +61,89 @@ const About = () => {
     >
       <motion.div variants={textVariant()} className="text-center mb-12">
         <p className={sectionStyles.sectionSubText}>Introduction</p>
-        <h2 className="text-4xl sm:text-5xl font-bold text-white mb-12">
-          Professional Overview
+        <h2 className="text-4xl sm:text-5xl font-bold text-white">
+          Professional Overview<span className="text-cyan-400">.</span>
         </h2>
       </motion.div>
 
-      <div className="flex flex-col lg:flex-row gap-12 items-center">
+      <div className="flex flex-col lg:flex-row gap-12 items-start">
+        {/* Left - Bio */}
         <motion.div
           variants={fadeIn("right", "tween", 0.2, 1)}
           className="flex-1"
         >
-          <motion.p className={`${sectionStyles.sectionContent} text-gray-300`}>
+          <p className="text-gray-300 text-base leading-relaxed">
             I'm{" "}
-            <span className={sectionStyles.sectionSubText}>Jeevesh Mahato</span>
-            , a Full Stack Developer with expertise in both frontend and backend
+            <span className="text-cyan-400 font-medium">Jeevesh Mahato</span>,
+            a Full Stack Developer with expertise in both frontend and backend
             technologies. I specialize in crafting seamless, high-performance
             web solutions that enhance user experience and drive functionality.
-          </motion.p>
+          </p>
 
-          <motion.p
-            className={`${sectionStyles.sectionContent} text-gray-300 mt-6`}
-          >
+          <p className="text-gray-300 text-base leading-relaxed mt-4">
             With extensive experience in{" "}
-            <span className={sectionStyles.sectionSubText}>
-              React.js, Next.js, and Three.js
-            </span>
-            , I build scalable applications that solve real-world problems. My
+            <span className="text-cyan-400 font-medium">React.js, Next.js, and Three.js</span>,
+            I build scalable applications that solve real-world problems. My
             technical skills span across modern JavaScript frameworks, UI/UX
             design, and cloud platforms like AWS.
-          </motion.p>
+          </p>
 
-          <div className="mt-8 grid grid-cols-2 gap-4 max-w-lg">
+          {/* Animated achievement counters */}
+          <div className="mt-10 grid grid-cols-2 sm:grid-cols-4 gap-6">
             {[
-              "React.js",
-              "Next.js",
-              "Node.js",
-              "Three.js",
-              "MongoDB",
-              "AWS",
-            ].map((tech, i) => (
+              { value: 20, suffix: "%", label: "Profit Increase" },
+              { value: 50, suffix: "%", label: "Customer Satisfaction" },
+              { value: 35, suffix: "%", label: "Faster Delivery" },
+              { value: 25, suffix: "%", label: "More Engagement" },
+            ].map((stat, i) => (
               <motion.div
-                key={tech}
-                className="flex items-center gap-2"
+                key={stat.label}
                 variants={fadeIn("up", "spring", i * 0.1, 0.75)}
+                className="text-center"
               >
-                <div className="w-2 h-2 rounded-full bg-cyan-400"></div>
-                <span className="text-gray-300">{tech}</span>
+                <AnimatedCounter target={stat.value} suffix={stat.suffix} />
+                <p className="text-gray-500 text-xs mt-1">{stat.label}</p>
               </motion.div>
             ))}
           </div>
         </motion.div>
 
+        {/* Right - Bento Grid Services */}
         <motion.div
           variants={fadeIn("left", "tween", 0.2, 1)}
-          className="flex-1 grid grid-cols-1 md:grid-cols-2 gap-6"
+          className="flex-1 grid grid-cols-1 sm:grid-cols-2 gap-4 w-full"
         >
-          {services.map((service, index) => (
-            <div
-              key={index}
-              className="mb-6 p-4 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-2xl shadow-lg"
-            >
-              <service.icon className="w-12 h-12 text-white" />
-              <h3 className="text-lg font-semibold mt-2">{service.title}</h3>
-              <p className="text-sm opacity-90 mt-2">{service.description}</p>
-            </div>
-          ))}
+          {services.map((service, index) => {
+            const color = accentColors[index % accentColors.length];
+            const isLarge = index < 2;
+
+            return (
+              <motion.div
+                key={index}
+                variants={fadeIn("up", "spring", index * 0.15, 0.75)}
+                whileHover={{ y: -4, transition: { duration: 0.2 } }}
+                className={`relative group bg-[#0f0f23] border border-gray-800/50 rounded-2xl overflow-hidden transition-all duration-300 hover:border-gray-700/50 ${
+                  isLarge ? "sm:row-span-1 p-6" : "p-5"
+                }`}
+              >
+                {/* Accent line top */}
+                <div className={`absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r ${color.from} ${color.to} opacity-0 group-hover:opacity-100 transition-opacity duration-300`} />
+
+                <div className={`w-10 h-10 rounded-xl bg-gradient-to-r ${color.from} ${color.to} flex items-center justify-center mb-4 ${color.shadow} shadow-lg`}>
+                  <service.icon className="w-5 h-5 text-white" />
+                </div>
+
+                <h3 className={`text-white font-semibold text-base mb-2`}>
+                  {service.title}
+                </h3>
+                <p className="text-gray-500 text-sm leading-relaxed">
+                  {service.description}
+                </p>
+              </motion.div>
+            );
+          })}
         </motion.div>
       </div>
-
-      {/* Experience Highlights */}
-      <motion.div className="mt-16" variants={fadeIn("up", "tween", 0.2, 1)}>
-        <h3 className="text-xl font-bold text-white mb-6">Key Achievements</h3>
-        <div className="grid md:grid-cols-3 gap-6">
-          {[
-            "Led team of 6 developers, increasing profits by 20%",
-            "Boosted customer satisfaction by 50% through optimized workflows",
-            "Reduced project delivery timelines by 35%",
-            "Increased product engagement by 25% in dynamic markets",
-          ].map((item, i) => (
-            <div
-              key={i}
-              className="bg-gray-900/50 p-4 rounded-lg border border-gray-800"
-            >
-              <div className="text-cyan-400 text-lg mb-2">0{i + 1}</div>
-              <p className="text-gray-300">{item}</p>
-            </div>
-          ))}
-        </div>
-      </motion.div>
     </motion.section>
   );
 };

@@ -1,8 +1,4 @@
 import {
-  mobile,
-  backend,
-  creator,
-  web,
   javascript,
   html,
   css,
@@ -13,56 +9,33 @@ import {
   figma,
   nodejs,
   mongodb,
-  // carrent,
-  // jobit,
-  // tripguide,
   getaitool,
-  threejs,
-  ricoz,
   cognizant,
-  cobol,
-  canva,
-  wordpress,
   nextjs,
   kunal,
   rajesh,
   adobe,
-  // fastx,
   swiggyClone,
   Netflix,
   youtubeClone,
   hybrid_utopia,
-  made_by_aura,
-  prabhavati,
   maitri,
   position2,
+  wordpress,
 } from "../assets";
 import { Code2, Workflow, Cpu, Palette } from "lucide-react";
 import {
-  Database,
   Server,
-  // github,
-  // thub,
   Box,
   Layers,
   Cloud,
   Code,
-  Terminal,
 } from "lucide-react";
 
 export const navLinks = [
-  {
-    id: "about",
-    title: "About",
-  },
-  {
-    id: "work",
-    title: "Work",
-  },
-  {
-    id: "contact",
-    title: "Contact",
-  },
+  { id: "about", title: "About" },
+  { id: "work", title: "Work" },
+  { id: "contact", title: "Contact" },
 ];
 
 const services = [
@@ -112,6 +85,7 @@ const technologies = [
   { name: "Adobe", icon: adobe },
   { name: "WordPress", icon: wordpress },
 ];
+
 const experiences = [
   {
     title: "UI Developer",
@@ -159,40 +133,6 @@ const experiences = [
       "Conducted code reviews and rigorous testing, increasing feature stability and donor contributions by 12%.",
     ],
   },
-  // {
-  //   title: "React.js Developer",
-  //   company_name: "Ricoz.io",
-  //   icon: ricoz,
-  //   iconBg: "#383E56",
-  //   date: "October 2023 - December 2024",
-  //   points: [
-  //     "Developed responsive user interfaces with React.js.",
-  //     "Managed state with Redux, enhancing scalability.",
-  //     "Worked alongside senior developers and interns to incorporate collaborative feedback into project development.",
-  //     "Optimized bug detection and documentation, improving app performance by 18%.",
-  //   ],
-  // },
-  // {
-  //   title: "WordPress Developer",
-  //   company_name: "Made By Aura",
-  //   icon: made_by_aura,
-  //   iconBg: "#E6DEDD",
-  //   date: "March 2024 - April 2024",
-  //   points: [
-  //     "Delivered polished WordPress sites tailored to organizational goals, excelling in visual design and compliance.",
-  //     "Specialized in PHP, HTML, CSS, and JavaScript to deliver compliant, user-centered designs with high brand fidelity.",
-  //   ],
-  // },
-  // {
-  //   title: "Junior Web Developer Intern",
-  //   company_name: "Prabhavati Digital Services Pvt Ltd",
-  //   icon: prabhavati,
-  //   iconBg: "#E6DEDD",
-  //   date: "November 2023 - January 2024",
-  //   points: [
-  //     "Acquired hands-on experience in HTML, CSS, and JavaScript, supporting full-stack development projects with attention to UX/UI principles.",
-  //   ],
-  // },
   {
     title: "Mainframe Developer Intern",
     company_name: "Cognizant Technology Solutions",
@@ -204,34 +144,6 @@ const experiences = [
     ],
   },
 ];
-
-// const experiences = [
-//   {
-//     title: "React.js Developer",
-//     company_name: "Ricoz",
-//     icon: ricoz,
-//     iconBg: "#383E56",
-//     date: "October 2023 - Present",
-//     points: [
-//       "Developing and maintaining web applications using React.js and other related technologies.",
-//       "Collaborating with cross-functional teams including designers, product managers, and other developers to create high-quality products.",
-//       "Implementing responsive design and ensuring cross-browser compatibility.",
-//       "Participating in code reviews and providing constructive feedback to other developers.",
-//     ],
-//   },
-//   {
-//     title: "Mainframe Developer",
-//     company_name: "Cognizant Technology Solutions",
-//     icon: cognizant,
-//     iconBg: "#E6DEDD",
-//     date: "Jan 2023 - July 2023",
-//     points: [
-//       "Developing and maintaining Mainframes using COBOL , DB2 and other related technologies.",
-//       "Collaborating with cross-functional teams including product managers, and other developers to create high-quality products.",
-//       "Participating in code reviews and providing constructive feedback to other developers.",
-//     ],
-//   },
-// ];
 
 const testimonials = [
   {
@@ -278,14 +190,14 @@ const projects = [
       { name: "AWS + Nginx", color: "lime-text-gradient" },
       { name: "Cloudflare", color: "indigo-text-gradient" },
     ],
-    image: maitri, // Replace this with your actual image import
-    source_code_link: "https://github.com/Jeeveshmahato/Maitri_App", // Add GitHub repo link if ready to share
-    deploy_link: "https://maitri-app-frontend.onrender.com/", // Update with your actual domain
+    image: maitri,
+    source_code_link: "https://github.com/Jeeveshmahato/Maitri_App",
+    deploy_link: "https://maitri-app-frontend.onrender.com/",
   },
   {
     name: "Get Me AI Tool",
     description:
-      "Get Me AI Tool is a full-stack directory platform for discovering and sharing AI-powered tools. Built with Vite, React, Tailwind CSS, and Redux Toolkit, it enables users to browse, submit, and manage AI tools with rich metadata and image previews. The backend, powered by Node.js, Express, and MongoDB, features secure JWT authentication, RESTful APIs, and CORS-protected communication. The app is mobile-responsive, deployed on Render and Vercel, and optimized for seamless client-side routing and real-time updates.",
+      "Get Me AI Tool is a full-stack directory platform for discovering and sharing AI-powered tools. Built with Vite, React, Tailwind CSS, and Redux Toolkit, it enables users to browse, submit, and manage AI tools with rich metadata and image previews. The backend, powered by Node.js, Express, and MongoDB, features secure JWT authentication, RESTful APIs, and CORS-protected communication.",
     tags: [
       { name: "ReactJs", color: "blue-text-gradient" },
       { name: "TailwindCSS", color: "pink-text-gradient" },
@@ -298,129 +210,50 @@ const projects = [
       { name: "Vercel", color: "lime-text-gradient" },
       { name: "REST API", color: "indigo-text-gradient" },
     ],
-    image: getaitool, // Replace with your actual image import
-    source_code_link: "https://github.com/Jeeveshmahato/AI-website", // Update if repo name changes
-    deploy_link: "https://ai-website-frontend.onrender.com/", // Your live frontend URL
+    image: getaitool,
+    source_code_link: "https://github.com/Jeeveshmahato/AI-website",
+    deploy_link: "https://ai-website-frontend.onrender.com/",
   },
-
   {
-    name: "Youtube_Clone",
+    name: "Youtube Clone",
     description:
       "I used YouTube APIs to display real-time data, optimize search, implement live chat functionality, and handle nth comments. I developed the frontend using ReactJS and TailwindCSS, and utilized Redux for state management.",
     tags: [
-      {
-        name: "ReactJs",
-        color: "blue-text-gradient",
-      },
-      {
-        name: "Redux-ToolKit",
-        color: "orange-text-gradient",
-      },
-      {
-        name: "TailwindCSS",
-        color: "pink-text-gradient",
-      },
+      { name: "ReactJs", color: "blue-text-gradient" },
+      { name: "Redux-ToolKit", color: "orange-text-gradient" },
+      { name: "TailwindCSS", color: "pink-text-gradient" },
     ],
     image: youtubeClone,
     source_code_link: "https://github.com/Jeeveshmahato/youtube_clone",
     deploy_link: "https://youtube-clone-three-ivory.vercel.app/",
   },
   {
-    name: "Netflix_Clone",
+    name: "Netflix Clone",
     description:
-      "I developed the frontend using ReactJS and TailwindCSS. I also used Google Firebase for user authentication and account management. Additionally, I utilized TMDB APIs to display real-time movies and TV shows. I built a search section to help users find their desired movies and TV shows. Please note that TMDB is blocked by some operators, so users may need to use a VPN or alternative internet providers to access the data.",
+      "I developed the frontend using ReactJS and TailwindCSS. I also used Google Firebase for user authentication and account management. Additionally, I utilized TMDB APIs to display real-time movies and TV shows with a search section for discovery.",
     tags: [
-      {
-        name: "ReactJs",
-        color: "blue-text-gradient",
-      },
-      {
-        name: "Redux-ToolKit",
-        color: "orange-text-gradient",
-      },
-      {
-        name: "TailwindCSS",
-        color: "pink-text-gradient",
-      },
-      {
-        name: "Firebase",
-        color: "orange-text-gradient",
-      },
+      { name: "ReactJs", color: "blue-text-gradient" },
+      { name: "Redux-ToolKit", color: "orange-text-gradient" },
+      { name: "TailwindCSS", color: "pink-text-gradient" },
+      { name: "Firebase", color: "orange-text-gradient" },
     ],
     image: Netflix,
     source_code_link: "https://github.com/Jeeveshmahato/NetflixGPT",
     deploy_link: "https://netflix-gpt-six-theta.vercel.app/",
   },
   {
-    name: "Swiggy_Clone",
+    name: "Swiggy Clone",
     description:
-      "I developed the frontend using ReactJS and TailwindCSS. I also used Google Firebase for user authentication and account management. Additionally, I utilized TMDB APIs to display real-time movies and TV shows. I built a search section to help users find their desired movies and TV shows. Please note that TMDB is blocked by some operators, so users may need to use a VPN or alternative internet providers to access the data.",
+      "A food ordering app clone built with ReactJS, TailwindCSS and Redux Toolkit. Features include restaurant browsing, menu display, cart management, and responsive design across all devices.",
     tags: [
-      {
-        name: "ReactJs",
-        color: "blue-text-gradient",
-      },
-      {
-        name: "Redux-ToolKit",
-        color: "orange-text-gradient",
-      },
-      {
-        name: "TailwindCSS",
-        color: "pink-text-gradient",
-      },
+      { name: "ReactJs", color: "blue-text-gradient" },
+      { name: "Redux-ToolKit", color: "orange-text-gradient" },
+      { name: "TailwindCSS", color: "pink-text-gradient" },
     ],
     image: swiggyClone,
     source_code_link: "https://github.com/Jeeveshmahato/Swiggy_Clone",
     deploy_link: "https://namaste-react-mu-dun.vercel.app/",
   },
-
-  // {
-  //   name: "Spotify Clone",
-  //   description:
-  //     "Developed Spotify clone which is simple, easy user friendly interactive interface features such as play, pause and seek songs that have been added.",
-  //   tags: [
-  //     {
-  //       name: "HTML",
-  //       color: "orange-text-gradient",
-  //     },
-  //     {
-  //       name: "CSS",
-  //       color: "blue-text-gradient",
-  //     },
-  //     {
-  //       name: "JavaScript",
-  //       color: "pink-text-gradient",
-  //     },
-  //   ],
-
-  //   image:
-  //     "https://user-images.githubusercontent.com/93731220/279587656-bd623a51-a3b7-45cd-969f-cc8dd7ae486b.png",
-  //   source_code_link: "https://github.com/Jeeveshmahato/Spotify-clone",
-  //   deploy_link: "https://jeeveshmahato.github.io/Spotify-clone/",
-  // },
-  // {
-  //   name: "Cynthia ugwu Clone",
-  //   description:
-  //     "Develoed a Award-wining website from scratch.Here you will witness the fusion HTML,CSS and Javascript as an awe-inspring forent-end project, adorned with mesmerizing animation powered by GSAP.",
-  //   tags: [
-  //     {
-  //       name: "HTML",
-  //       color: "orange-text-gradient",
-  //     },
-  //     {
-  //       name: "CSS",
-  //       color: "blue-text-gradient",
-  //     },
-  //     {
-  //       name: "JavaScript",
-  //       color: "pink-text-gradient",
-  //     },
-  //   ],
-  //   image:
-  //     "https://user-images.githubusercontent.com/93731220/279599982-bdaa29a4-3106-4873-b664-d94dc348971d.png",
-  //   source_code_link: "https://github.com/Jeeveshmahato/cynthiaugwu-Clone",
-  //   deploy_link: "https://jeeveshmahato.github.io/cynthiaugwu-Clone/",
-  // },
 ];
 
 export { services, technologies, experiences, testimonials, projects };

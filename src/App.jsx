@@ -1,33 +1,43 @@
-import React from "react";
+import React, { lazy, Suspense } from "react";
 import { BrowserRouter } from "react-router-dom";
 import {
   About,
-  Contact,
   Experience,
-  Feedbacks,
   Hero,
   Navbar,
   Tech,
   Works,
-  StarsCanvas,
 } from "./components";
+
+const Feedbacks = lazy(() => import("./components/Feedbacks"));
+const Contact = lazy(() => import("./components/Contact"));
+const StarsCanvas = lazy(() => import("./components/canvas/Stars"));
+
+const SectionFallback = () => (
+  <div className="w-full h-40 flex items-center justify-center">
+    <div className="w-8 h-8 border-2 border-cyan-400 border-t-transparent rounded-full animate-spin" />
+  </div>
+);
+
 const App = () => {
   return (
     <BrowserRouter>
-      <div className=" relative z-[9999999] bg-primary max-w-7xl mx-auto flex flex-col items-center">
-        {/* <div className=" sm:px-16 px-6 sm:py-16 py-10 max-w-7xl mx-auto relative z-0"> */}
+      <div className="relative z-10 bg-primary max-w-7xl mx-auto flex flex-col items-center">
         <Navbar />
-        {/* </div> */}
         <Hero />
         <About />
         <Experience />
         <Tech />
         <Works />
-        <Feedbacks />
+        <Suspense fallback={<SectionFallback />}>
+          <Feedbacks />
+        </Suspense>
       </div>
-      <div className=" relative -z-0">
-        <Contact />
-        <StarsCanvas />
+      <div className="relative z-0">
+        <Suspense fallback={<SectionFallback />}>
+          <Contact />
+          <StarsCanvas />
+        </Suspense>
       </div>
     </BrowserRouter>
   );
