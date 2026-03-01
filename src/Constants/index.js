@@ -122,7 +122,7 @@ const experiences = [
     ],
   },
   {
-    title: "Frontend Engineer",
+    title: "Front-end Engineer",
     company_name: "Hybrid Utopia",
     icon: hybrid_utopia,
     iconBg: "#383E56",
