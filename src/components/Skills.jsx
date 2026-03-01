@@ -19,7 +19,7 @@ import {
   Network,
   TestTube2,
   Users,
-  Kanban,
+  ClipboardList,
   Crown,
 } from "lucide-react";
 
@@ -208,7 +208,7 @@ const skillCategories = [
   },
   {
     title: "Project Management",
-    icon: Kanban,
+    icon: ClipboardList,
     color: "from-lime-500 to-green-600",
     skills: ["Trello", "Jira", "Slack Integration"],
   },
