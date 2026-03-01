@@ -2,11 +2,14 @@ import React, { lazy, Suspense } from "react";
 import { BrowserRouter } from "react-router-dom";
 import {
   About,
+  Skills,
   Experience,
   Hero,
   Navbar,
   Tech,
   Works,
+  Education,
+  Footer,
 } from "./components";
 
 const Feedbacks = lazy(() => import("./components/Feedbacks"));
@@ -26,12 +29,14 @@ const App = () => {
         <Navbar />
         <Hero />
         <About />
+        <Skills />
         <Experience />
         <Tech />
         <Works />
         <Suspense fallback={<SectionFallback />}>
           <Feedbacks />
         </Suspense>
+        <Education />
       </div>
       <div className="relative z-0">
         <Suspense fallback={<SectionFallback />}>
@@ -39,6 +44,7 @@ const App = () => {
           <StarsCanvas />
         </Suspense>
       </div>
+      <Footer />
     </BrowserRouter>
   );
 };

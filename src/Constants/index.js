@@ -34,6 +34,7 @@ import {
 
 export const navLinks = [
   { id: "about", title: "About" },
+  { id: "skills", title: "Skills" },
   { id: "work", title: "Work" },
   { id: "contact", title: "Contact" },
 ];
@@ -43,25 +44,25 @@ const services = [
     title: "Full Stack Web Development",
     icon: Code2,
     description:
-      "I build complete websites and web apps — from what users see to the systems running in the background.",
+      "Building complete web applications from React/Next.js frontends to Node.js/MongoDB backends with JWT auth, real-time features, and payment integration.",
   },
   {
-    title: "Project Leadership",
+    title: "Project & Team Leadership",
     icon: Workflow,
     description:
-      "I plan, organize, and guide projects so teams deliver high-quality results on time.",
+      "Leading teams of 6+ developers, managing product roadmaps, coordinating delivery milestones, and driving 35% faster project delivery timelines.",
   },
   {
-    title: "Backend & API Development",
+    title: "Backend & API Architecture",
     icon: Cpu,
     description:
-      "I create the secure, powerful systems and APIs that keep apps running fast and reliably.",
+      "Designing RESTful APIs, GraphQL endpoints, WebSocket systems, and cloud deployments on AWS with Nginx, Docker, and CI/CD pipelines.",
   },
   {
-    title: "Frontend & User Experience",
+    title: "Frontend System Design",
     icon: Palette,
     description:
-      "I design smooth, modern interfaces so users enjoy fast, intuitive, and beautiful experiences.",
+      "Architecting scalable UI systems with performance optimization, caching strategies, PWAs, accessibility (WCAG), and security best practices.",
   },
 ];
 
@@ -88,19 +89,20 @@ const technologies = [
 
 const experiences = [
   {
-    title: "UI Developer",
-    company_name: "Position²",
-    icon: position2,
-    iconBg: "#383E56",
-    date: "July 2025 - Present",
+    title: "Front-end Engineer",
+    company_name: "Protecte Technologies",
+    icon: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Crect fill='%230ea5e9' width='100' height='100' rx='20'/%3E%3Ctext x='50' y='62' text-anchor='middle' fill='white' font-size='40' font-family='Arial,sans-serif' font-weight='bold'%3EPT%3C/text%3E%3C/svg%3E",
+    iconBg: "#0c1a2e",
+    date: "November 2025 - Present",
     points: [
-      "Engineered high-performance, responsive user interfaces using React.js, Tailwind CSS, and Redux Toolkit, improving load times and user engagement by 40%.",
-      "Collaborated with cross-functional teams to translate complex business requirements into intuitive UI components, reducing revision cycles by 25%.",
+      "Engineered high-performance, responsive user interfaces using React.js, Next.js, Tailwind CSS, and Redux Toolkit, improving load times and user engagement by 40%.",
+      "Designed and developed the MailArmor Admin Portal frontend from scratch, ensuring clean UI/UX and long-term maintainability.",
+      "Built and managed the MailArmor Client Portal, delivering updates, improvements, and platform stability.",
       "Integrated RESTful APIs and GraphQL endpoints with dynamic frontend views, enhancing data flow and real-time interactivity across dashboards.",
       "Led UI/UX audits and implemented accessibility best practices (WCAG), increasing usability scores and compliance across client-facing platforms.",
-      "Optimized component architecture for scalability and maintainability, reducing technical debt and improving developer onboarding speed.",
-      "Utilized Git workflows and CI/CD pipelines to streamline deployment processes, ensuring consistent delivery across staging and production environments.",
-      "Actively participated in client demos and feedback sessions, refining UI deliverables to align with branding and performance expectations.",
+      "Managed AWS servers and AWS Amplify with Git integration, overseeing deployments, monitoring, and CI/CD pipelines.",
+      "Collaborated with cross-functional teams to translate complex business requirements into intuitive UI components, reducing revision cycles by 25%.",
+      "Performed functional and UI testing, identifying bugs early and ensuring quality before deployment.",
     ],
   },
   {
@@ -108,15 +110,14 @@ const experiences = [
     company_name: "Ynaps",
     icon: "https://ynaps.com/assets/avator/YNAPS.png",
     iconBg: "#383E56",
-    date: "December 2024 - July 2025",
+    date: "December 2024 - November 2025",
     points: [
-      "Optimized project workflows and strategic execution, leading to a 20% increase in company profits and a 50% boost in customer satisfaction.",
-      "Facilitated seamless collaboration between clients and development teams, ensuring precise requirement implementation and reducing miscommunication by 30%.",
-      "Spearheaded complex problem-solving, streamlining processes and accelerating project delivery timelines by 35%.",
-      "Actively contributed to development by writing and optimizing key application features, ensuring high-quality and scalable code deployment.",
-      "Defined and executed strategic roadmaps, increasing product adaptability and engagement by 25% in dynamic market conditions.",
-      "Reviewed and enhanced code structures, debugging critical issues and improving efficiency across multiple project modules.",
-      "Led stakeholder discussions and decision-making processes, strengthening relationships and driving long-term business growth.",
+      "Directed cross-functional teams to translate complex business requirements into intuitive UI solutions, reducing revision cycles by 25%.",
+      "Oversaw product roadmaps and coordinated delivery milestones, ensuring alignment with business goals and client expectations.",
+      "Guided developers through technical roadblocks, offering insights and alternative approaches, accelerating project delivery timelines by 35%.",
+      "Enhanced customer satisfaction by implementing user-centric solutions, resulting in a 50% improvement in overall client feedback scores.",
+      "Defined product strategies and conducted competitor analysis, identifying opportunities that increased product engagement by 25%.",
+      "Facilitated collaboration between teams to streamline development processes, improving cross-functional coordination and reducing project bottlenecks.",
     ],
   },
   {
@@ -124,13 +125,14 @@ const experiences = [
     company_name: "Hybrid Utopia",
     icon: hybrid_utopia,
     iconBg: "#383E56",
-    date: "July 2023 - December 2025",
+    date: "July 2023 - December 2024",
     points: [
-      "Developed interactive wireframes and mock designs for landing pages, enhancing engagement for 5+ new product concepts.",
-      "Created fully accessible and responsive interfaces, contributing to a 135% increase in 5-star UX/UI reviews.",
-      "Streamlined bottlenecks in project workflow with the Complexity Score tool, increasing efficiency by 72%.",
-      "Implemented modern JavaScript frameworks, HTML5, and CSS3 for highly satisfying user experiences, with satisfaction rates up by 31%.",
-      "Conducted code reviews and rigorous testing, increasing feature stability and donor contributions by 12%.",
+      "Optimized project workflows and strategic execution, leading to a 20% increase in company profits and a 50% boost in customer satisfaction.",
+      "Delivered accessible, responsive interfaces that led to a 135% increase in 5-star UX/UI reviews.",
+      "Eliminated workflow bottlenecks using the Complexity Score tool, improving team efficiency by 72%.",
+      "Engineered and customized Shopify storefronts and backend logic, enhancing user experience and boosting conversion rates by 40%.",
+      "Integrated third-party apps and APIs into Shopify ecosystems, automating workflows and improving operational efficiency.",
+      "Conducted thorough code reviews and testing cycles, enhancing feature stability and increasing donor contributions by 12%.",
     ],
   },
   {

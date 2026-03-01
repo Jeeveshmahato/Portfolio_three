@@ -3,7 +3,11 @@ import { motion } from "framer-motion";
 import { sectionStyles } from "./Styles";
 import { EarthCanvas } from "./canvas";
 import { SectionWrapper } from "../hoc";
-import { slideIn, staggerContainer, textVariant } from "../utils/motion";
+import { slideIn, staggerContainer, textVariant, fadeIn } from "../utils/motion";
+import { Mail, MessageCircle, Send, Phone } from "lucide-react";
+
+const WHATSAPP_NUMBER = "916203534938";
+const EMAIL_ADDRESS = "jeeveshmaaht@gmail.com";
 
 const sanitizeInput = (str) => {
   return str
@@ -20,14 +24,25 @@ const isValidEmail = (email) => {
   return /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)+$/.test(email);
 };
 
-const isValidUrl = (url) => {
-  try {
-    const parsed = new URL(url);
-    return parsed.protocol === "https:" || parsed.protocol === "http:";
-  } catch {
-    return false;
-  }
-};
+const ContactCard = ({ icon: Icon, title, value, href, color, delay }) => (
+  <motion.a
+    href={href}
+    target="_blank"
+    rel="noopener noreferrer"
+    variants={fadeIn("up", "spring", delay, 0.75)}
+    whileHover={{ y: -4, transition: { duration: 0.2 } }}
+    className="group relative flex items-center gap-4 p-5 bg-[#0f0f23] border border-gray-800/50 rounded-2xl overflow-hidden transition-all duration-300 hover:border-gray-700/50"
+  >
+    <div className={`absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r ${color} opacity-0 group-hover:opacity-100 transition-opacity duration-300`} />
+    <div className={`w-12 h-12 rounded-xl bg-gradient-to-r ${color} flex items-center justify-center shadow-lg flex-shrink-0`}>
+      <Icon className="w-5 h-5 text-white" />
+    </div>
+    <div>
+      <p className="text-gray-500 text-xs uppercase tracking-wider">{title}</p>
+      <p className="text-white font-medium text-sm mt-0.5">{value}</p>
+    </div>
+  </motion.a>
+);
 
 const Contact = () => {
   const [form, setForm] = useState({
@@ -76,7 +91,6 @@ const Contact = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Rate limit: 1 submission per 30 seconds
     const now = Date.now();
     if (now - lastSubmitTime < 30000) {
       setErrors({ message: "Please wait before submitting again." });
@@ -91,18 +105,11 @@ const Contact = () => {
     const cleanEmail = sanitizeInput(form.email);
     const cleanMessage = sanitizeInput(form.message);
 
-    const whatsappNumber = import.meta.env.VITE_WHATSAPP_NUMBER;
-    if (!whatsappNumber || !/^\d{10,15}$/.test(whatsappNumber)) {
-      setErrors({ message: "Contact configuration error. Please try again later." });
-      setLoading(false);
-      return;
-    }
-
     const text = encodeURIComponent(
       `New Contact From Portfolio:\n\nName: ${cleanName}\nEmail: ${cleanEmail}\nMessage: ${cleanMessage}`
     );
 
-    window.open(`https://wa.me/${whatsappNumber}?text=${text}`, "_blank", "noopener,noreferrer");
+    window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${text}`, "_blank", "noopener,noreferrer");
 
     setForm({ name: "", email: "", message: "" });
     setSubmitted(true);
@@ -123,34 +130,74 @@ const Contact = () => {
     >
       <motion.div variants={textVariant()} className="text-center">
         <p className={sectionStyles.sectionSubText}>Get in touch</p>
-        <h2 className="text-4xl sm:text-5xl font-bold text-white mb-12">
+        <h2 className="text-4xl sm:text-5xl font-bold text-white mb-4">
           Contact<span className="text-cyan-400">.</span>
         </h2>
+        <p className="text-gray-400 max-w-xl mx-auto text-base mb-10">
+          Have a project in mind or want to collaborate? Reach out through the form below or contact me directly.
+        </p>
       </motion.div>
 
-      <div className="xl:mt-12 flex xl:flex-row flex-col-reverse gap-10">
+      {/* Direct Contact Options */}
+      <motion.div
+        variants={fadeIn("up", "tween", 0.1, 0.6)}
+        className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-10"
+      >
+        <ContactCard
+          icon={Mail}
+          title="Email"
+          value={EMAIL_ADDRESS}
+          href={`mailto:${EMAIL_ADDRESS}`}
+          color="from-cyan-500 to-blue-600"
+          delay={0.1}
+        />
+        <ContactCard
+          icon={MessageCircle}
+          title="WhatsApp"
+          value="+91 6203534938"
+          href={`https://wa.me/${WHATSAPP_NUMBER}`}
+          color="from-emerald-500 to-green-600"
+          delay={0.2}
+        />
+        <ContactCard
+          icon={Phone}
+          title="Phone"
+          value="+91 6203534938"
+          href="tel:+916203534938"
+          color="from-purple-500 to-pink-600"
+          delay={0.3}
+        />
+      </motion.div>
+
+      <div className="xl:mt-6 flex xl:flex-row flex-col-reverse gap-10">
         {/* Form Section */}
         <motion.div
           variants={slideIn("left", "tween", 0.2, 1)}
           className={`${sectionStyles.card} flex-[0.75] relative overflow-hidden`}
         >
-          {/* Decorative floating shapes */}
-          <div className="absolute -top-20 -right-20 w-40 h-40 rounded-full bg-cyan-500/5 blur-2xl" />
-          <div className="absolute -bottom-20 -left-20 w-40 h-40 rounded-full bg-blue-500/5 blur-2xl" />
+          <div className="absolute -top-20 -right-20 w-40 h-40 rounded-full bg-cyan-500/5 blur-xl opacity-50 pointer-events-none" />
+          <div className="absolute -bottom-20 -left-20 w-40 h-40 rounded-full bg-blue-500/5 blur-xl opacity-50 pointer-events-none" />
 
-          {/* Success Toast */}
           {submitted && (
             <motion.div
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              className="absolute top-4 left-4 right-4 bg-emerald-500/20 border border-emerald-500/30 text-emerald-300 px-4 py-3 rounded-xl text-sm text-center backdrop-blur-sm z-10"
+              initial={{ opacity: 0, y: -10, scale: 0.95 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: -10, scale: 0.95 }}
+              className="relative mb-4 bg-emerald-500/15 border border-emerald-500/30 text-emerald-300 px-4 py-3 rounded-xl text-sm text-center z-20"
             >
-              Message sent successfully! Redirecting to WhatsApp...
+              <span className="flex items-center justify-center gap-2">
+                <svg className="w-4 h-4 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                </svg>
+                Message sent successfully! Redirecting to WhatsApp...
+              </span>
             </motion.div>
           )}
 
-          <form onSubmit={handleSubmit} className="mt-6 flex flex-col gap-6 relative z-[1]">
+          <h3 className="text-white font-semibold text-lg mb-1">Send me a message</h3>
+          <p className="text-gray-500 text-sm mb-6">Fill out the form and I'll get back to you as soon as possible.</p>
+
+          <form onSubmit={handleSubmit} className="flex flex-col gap-5 relative z-[1]">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -229,7 +276,7 @@ const Contact = () => {
 
             <motion.button
               type="submit"
-              className={`${sectionStyles.buttonPrimary} disabled:opacity-50 disabled:cursor-not-allowed`}
+              className={`${sectionStyles.buttonPrimary} disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2`}
               whileHover={{ scale: loading ? 1 : 1.03 }}
               whileTap={{ scale: loading ? 1 : 0.97 }}
               initial={{ opacity: 0 }}
@@ -262,7 +309,10 @@ const Contact = () => {
                   Sending...
                 </span>
               ) : (
-                "Send via WhatsApp"
+                <>
+                  <Send className="w-4 h-4" />
+                  Send via WhatsApp
+                </>
               )}
             </motion.button>
           </form>

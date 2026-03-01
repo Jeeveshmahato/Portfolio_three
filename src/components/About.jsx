@@ -75,26 +75,28 @@ const About = () => {
           <p className="text-gray-300 text-base leading-relaxed">
             I'm{" "}
             <span className="text-cyan-400 font-medium">Jeevesh Mahato</span>,
-            a Full Stack Developer with expertise in both frontend and backend
-            technologies. I specialize in crafting seamless, high-performance
-            web solutions that enhance user experience and drive functionality.
+            a Full Stack Developer specializing in{" "}
+            <span className="text-cyan-400 font-medium">React.js, Next.js, Node.js, and MongoDB</span>,
+            with a strong focus on system design, security, testing, and performance
+            optimization. I lead teams, manage products, and build scalable
+            architectures from frontend to backend.
           </p>
 
           <p className="text-gray-300 text-base leading-relaxed mt-4">
-            With extensive experience in{" "}
-            <span className="text-cyan-400 font-medium">React.js, Next.js, and Three.js</span>,
-            I build scalable applications that solve real-world problems. My
-            technical skills span across modern JavaScript frameworks, UI/UX
-            design, and cloud platforms like AWS.
+            With experience across{" "}
+            <span className="text-cyan-400 font-medium">frontend system design, DevOps, and cloud infrastructure</span>,
+            I create seamless user experiences through clean architecture, efficient
+            communication protocols (WebSockets, SSE), and modern practices like
+            PWAs, caching strategies, and real-time systems.
           </p>
 
           {/* Animated achievement counters */}
           <div className="mt-10 grid grid-cols-2 sm:grid-cols-4 gap-6">
             {[
-              { value: 20, suffix: "%", label: "Profit Increase" },
-              { value: 50, suffix: "%", label: "Customer Satisfaction" },
-              { value: 35, suffix: "%", label: "Faster Delivery" },
-              { value: 25, suffix: "%", label: "More Engagement" },
+              { value: 3, suffix: "+", label: "Years Experience" },
+              { value: 40, suffix: "%", label: "Faster Load Times" },
+              { value: 135, suffix: "%", label: "UX Review Growth" },
+              { value: 6, suffix: "+", label: "Team Members Led" },
             ].map((stat, i) => (
               <motion.div
                 key={stat.label}

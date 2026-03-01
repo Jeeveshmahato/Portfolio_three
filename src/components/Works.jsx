@@ -135,8 +135,9 @@ const Works = () => {
         variants={fadeIn("", "", 0.1, 1)}
         className="text-gray-500 text-center max-w-2xl mx-auto text-sm leading-relaxed mb-12"
       >
-        My projects showcase real-world solutions. Each reflects my problem-solving
-        skills and technical versatility.
+        Each project demonstrates end-to-end engineering — from system design and
+        architecture to deployment and optimization. Built with modern tech stacks
+        and production-grade practices.
       </motion.p>
 
       <motion.div

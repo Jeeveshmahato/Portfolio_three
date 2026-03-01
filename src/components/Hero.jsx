@@ -5,9 +5,9 @@ import myImg from "../assets/Myimg.jpg";
 
 const roles = [
   "Full Stack Developer",
-  "UI/UX Specialist",
-  "React Engineer",
-  "Problem Solver",
+  "Frontend System Architect",
+  "React & Next.js Engineer",
+  "Project Leader",
 ];
 
 const Hero = () => {
@@ -119,9 +119,10 @@ const Hero = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.6, duration: 0.6 }}
             >
-              I craft immersive 3D visuals, elegant user interfaces, and powerful
-              web applications. Building scalable solutions that solve real-world
-              problems.
+              I build scalable, high-performance web applications with expertise
+              in system design, security, and performance optimization. Passionate
+              about clean architecture, real-time communication, and delivering
+              robust, future-ready solutions.
             </motion.p>
 
             {/* Glassmorphic Skill Badges */}
@@ -131,7 +132,7 @@ const Hero = () => {
               animate={{ opacity: 1 }}
               transition={{ delay: 0.7 }}
             >
-              {["React.js", "Next.js", "Three.js", "Node.js", "MongoDB", "AWS"].map(
+              {["React.js", "Next.js", "Node.js", "MongoDB", "TypeScript", "AWS", "Docker", "System Design"].map(
                 (skill, i) => (
                   <motion.span
                     key={skill}
