@@ -242,7 +242,7 @@ const projects = [
     ],
     image: Netflix,
     source_code_link: "https://github.com/Jeeveshmahato/NetflixGPT",
-    deploy_link: "https://netflix-gpt-six-theta.vercel.app/",
+    deploy_link: "https://netflix-gpt-dqn7.vercel.app/",
   },
   {
     name: "Swiggy Clone",
