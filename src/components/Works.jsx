@@ -6,6 +6,15 @@ import { SectionWrapper } from "../hoc";
 import { projects } from "../Constants";
 import { fadeIn, textVariant, staggerContainer } from "../utils/motion";
 
+const isSafeUrl = (url) => {
+  try {
+    const parsed = new URL(url);
+    return parsed.protocol === "https:" || parsed.protocol === "http:";
+  } catch {
+    return false;
+  }
+};
+
 const ProjectCard = ({
   index,
   name,
@@ -64,7 +73,7 @@ const ProjectCard = ({
           {/* Action buttons */}
           <div className="absolute inset-0 flex justify-end items-start gap-2 m-3 opacity-100 lg:opacity-0 lg:group-hover:opacity-100 transition-opacity duration-300">
             <button
-              onClick={() => window.open(source_code_link, "_blank", "noopener,noreferrer")}
+              onClick={() => isSafeUrl(source_code_link) && window.open(source_code_link, "_blank", "noopener,noreferrer")}
               className="w-9 h-9 rounded-full bg-black/60 backdrop-blur-sm border border-white/10 flex items-center justify-center hover:bg-black/80 hover:scale-110 transition-all"
               aria-label="View source code"
             >
@@ -72,7 +81,7 @@ const ProjectCard = ({
             </button>
             {deploy_link && (
               <button
-                onClick={() => window.open(deploy_link, "_blank", "noopener,noreferrer")}
+                onClick={() => isSafeUrl(deploy_link) && window.open(deploy_link, "_blank", "noopener,noreferrer")}
                 className="w-9 h-9 rounded-full bg-black/60 backdrop-blur-sm border border-white/10 flex items-center justify-center hover:bg-black/80 hover:scale-110 transition-all"
                 aria-label="View live demo"
               >

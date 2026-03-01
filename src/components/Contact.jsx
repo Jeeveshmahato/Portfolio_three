@@ -6,11 +6,27 @@ import { SectionWrapper } from "../hoc";
 import { slideIn, staggerContainer, textVariant } from "../utils/motion";
 
 const sanitizeInput = (str) => {
-  return str.replace(/<[^>]*>/g, "").trim();
+  return str
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#x27;")
+    .replace(/\//g, "&#x2F;")
+    .trim();
 };
 
 const isValidEmail = (email) => {
-  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  return /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)+$/.test(email);
+};
+
+const isValidUrl = (url) => {
+  try {
+    const parsed = new URL(url);
+    return parsed.protocol === "https:" || parsed.protocol === "http:";
+  } catch {
+    return false;
+  }
 };
 
 const Contact = () => {
@@ -22,6 +38,7 @@ const Contact = () => {
   const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState({});
   const [submitted, setSubmitted] = useState(false);
+  const [lastSubmitTime, setLastSubmitTime] = useState(0);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -59,7 +76,14 @@ const Contact = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    // Rate limit: 1 submission per 30 seconds
+    const now = Date.now();
+    if (now - lastSubmitTime < 30000) {
+      setErrors({ message: "Please wait before submitting again." });
+      return;
+    }
     if (!validate()) return;
+    setLastSubmitTime(now);
 
     setLoading(true);
 
@@ -67,8 +91,8 @@ const Contact = () => {
     const cleanEmail = sanitizeInput(form.email);
     const cleanMessage = sanitizeInput(form.message);
 
-    const whatsappNumber = import.meta.env.VITE_WHATSAPP_NUMBER || "916203534938";
-    if (!whatsappNumber) {
+    const whatsappNumber = import.meta.env.VITE_WHATSAPP_NUMBER;
+    if (!whatsappNumber || !/^\d{10,15}$/.test(whatsappNumber)) {
       setErrors({ message: "Contact configuration error. Please try again later." });
       setLoading(false);
       return;
