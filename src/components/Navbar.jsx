@@ -77,7 +77,7 @@ const NewNavbar = () => {
             LinkedIn
           </a>
           <a
-            href="https://drive.google.com/file/d/1U5C90XWUjNlFEe91wI3hfGmRNoZ9mYS-/view"
+            href="https://drive.google.com/file/d/1y7H8IGty8Qh99akZT99dEjciLDaJlh0g/view"
             target="_blank"
             rel="noopener noreferrer"
             className="px-4 py-1.5 rounded-full text-sm font-medium bg-gradient-to-r from-cyan-500 to-blue-600 text-white hover:shadow-lg hover:shadow-cyan-500/20 transition-all duration-200"
