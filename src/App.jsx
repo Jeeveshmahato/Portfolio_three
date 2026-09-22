@@ -1,51 +1,35 @@
-import React, { lazy, Suspense } from "react";
-import { BrowserRouter } from "react-router-dom";
-import {
-  About,
-  Skills,
-  Experience,
-  Hero,
-  Navbar,
-  Tech,
-  Works,
-  Education,
-  Footer,
-} from "./components";
-
-const Feedbacks = lazy(() => import("./components/Feedbacks"));
-const Contact = lazy(() => import("./components/Contact"));
-const StarsCanvas = lazy(() => import("./components/canvas/Stars"));
-
-const SectionFallback = () => (
-  <div className="w-full h-40 flex items-center justify-center">
-    <div className="w-8 h-8 border-2 border-cyan-400 border-t-transparent rounded-full animate-spin" />
-  </div>
-);
+import Navbar from "./components/Navbar";
+import Hero from "./components/Hero";
+import About from "./components/About";
+import Experience from "./components/Experience";
+import Projects from "./components/Projects";
+import Skills from "./components/Skills";
+import Contact from "./components/Contact";
+import Footer from "./components/Footer";
+import { useReveal } from "./hooks";
 
 const App = () => {
+  useReveal();
+
   return (
-    <BrowserRouter>
-      <div className="relative z-10 bg-primary max-w-7xl mx-auto flex flex-col items-center">
-        <Navbar />
+    <>
+      <a
+        href="#main"
+        className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-md focus:bg-ink focus:px-4 focus:py-2 focus:text-sm focus:text-bg"
+      >
+        Skip to content
+      </a>
+      <Navbar />
+      <main id="main">
         <Hero />
         <About />
-        <Skills />
         <Experience />
-        <Tech />
-        <Works />
-        <Suspense fallback={<SectionFallback />}>
-          <Feedbacks />
-        </Suspense>
-        <Education />
-      </div>
-      <div className="relative z-0">
-        <Suspense fallback={<SectionFallback />}>
-          <Contact />
-          <StarsCanvas />
-        </Suspense>
-      </div>
+        <Projects />
+        <Skills />
+        <Contact />
+      </main>
       <Footer />
-    </BrowserRouter>
+    </>
   );
 };
 

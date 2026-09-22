@@ -1,164 +1,118 @@
-import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-import { motion } from "framer-motion";
-import { menu, close } from "../assets";
-import img1 from "../assets/logo.png";
-import { navLinks } from "../Constants";
+import { useEffect, useState } from "react";
+import { Menu, Moon, Sun, X } from "lucide-react";
+import { navLinks, profile } from "../data/profile";
+import { useActiveSection, useTheme } from "../hooks";
 
-const NewNavbar = () => {
-  const [active, setActive] = useState("");
-  const [toggle, setToggle] = useState(false);
-  const [scrollProgress, setScrollProgress] = useState(0);
-  const [scrolled, setScrolled] = useState(false);
+const sectionIds = navLinks.map((link) => link.id);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
-      const progress = totalHeight > 0 ? window.scrollY / totalHeight : 0;
-      setScrollProgress(progress);
-      setScrolled(window.scrollY > 50);
-    };
-
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+const ThemeToggle = () => {
+  const [theme, toggle] = useTheme();
+  const isDark = theme === "dark";
 
   return (
-    <nav
-      className={`w-full max-w-[1400px] flex flex-col items-center py-4 px-6 fixed top-0 z-50 transition-all duration-300 ${
-        scrolled
-          ? "bg-[#050816]/80 backdrop-blur-xl shadow-lg shadow-black/10"
-          : "bg-[#050816]/40 backdrop-blur-md"
-      }`}
+    <button
+      type="button"
+      onClick={toggle}
+      className="grid h-9 w-9 place-items-center rounded-lg text-muted transition-colors hover:bg-subtle hover:text-ink"
+      aria-label={isDark ? "Switch to light theme" : "Switch to dark theme"}
     >
-      <div className="flex w-full justify-between items-center">
-        <Link
-          to="/"
-          className="flex items-center gap-2"
-          onClick={() => {
-            setActive("");
-            window.scrollTo(0, 0);
-          }}
-        >
-          <img src={img1} alt="logo" className="w-9 h-9 object-contain" />
-          <p className="flex text-[18px] text-white font-bold cursor-pointer">
-            Jeevesh &nbsp;
-            <span className="sm:block hidden">| Full Stack Developer</span>
-          </p>
-        </Link>
-
-        {/* Desktop Navigation */}
-        <ul className="list-none hidden lg:flex flex-row gap-8 items-center">
-          {navLinks.map((link) => (
-            <li
-              key={link.id}
-              className={`${
-                active === link.title ? "text-white" : "text-gray-400"
-              } hover:text-white text-[15px] font-medium cursor-pointer transition-colors duration-200`}
-              onClick={() => setActive(link.title)}
-            >
-              <a href={`#${link.id}`}>{link.title}</a>
-            </li>
-          ))}
-          <a
-            href="https://github.com/Jeeveshmahato"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-gray-400 hover:text-white text-[15px] font-medium cursor-pointer transition-colors duration-200"
-          >
-            GitHub
-          </a>
-          <a
-            href="https://www.linkedin.com/in/jeeveshmahato/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-gray-400 hover:text-white text-[15px] font-medium cursor-pointer transition-colors duration-200"
-          >
-            LinkedIn
-          </a>
-          <a
-            href="https://drive.google.com/file/d/1y7H8IGty8Qh99akZT99dEjciLDaJlh0g/view"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="px-4 py-1.5 rounded-full text-sm font-medium bg-gradient-to-r from-cyan-500 to-blue-600 text-white hover:shadow-lg hover:shadow-cyan-500/20 transition-all duration-200"
-          >
-            Resume
-          </a>
-        </ul>
-
-        {/* Mobile Menu */}
-        <div className="lg:hidden flex flex-1 justify-end items-center">
-          <img
-            src={toggle ? close : menu}
-            alt="menu"
-            className="w-[28px] h-[28px] object-contain cursor-pointer"
-            onClick={() => setToggle(!toggle)}
-          />
-
-          <motion.div
-            initial={false}
-            animate={toggle ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }}
-            transition={{ duration: 0.25 }}
-            className={`${
-              !toggle ? "pointer-events-none" : ""
-            } p-6 absolute top-16 right-4 min-w-[200px] z-10 rounded-2xl bg-[#0a0a20]/95 backdrop-blur-xl border border-gray-800/50 shadow-2xl`}
-          >
-            <ul className="list-none flex flex-col gap-4">
-              {navLinks.map((link) => (
-                <li
-                  key={link.id}
-                  className={`${
-                    active === link.title ? "text-white" : "text-gray-400"
-                  } hover:text-white text-[16px] font-medium cursor-pointer transition-colors`}
-                  onClick={() => {
-                    setToggle(false);
-                    setActive(link.title);
-                  }}
-                >
-                  <a href={`#${link.id}`}>{link.title}</a>
-                </li>
-              ))}
-              <a
-                href="https://github.com/Jeeveshmahato"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-gray-400 hover:text-white text-[16px] font-medium cursor-pointer transition-colors"
-                onClick={() => setToggle(false)}
-              >
-                GitHub
-              </a>
-              <a
-                href="https://www.linkedin.com/in/jeeveshmahato/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-gray-400 hover:text-white text-[16px] font-medium cursor-pointer transition-colors"
-                onClick={() => setToggle(false)}
-              >
-                LinkedIn
-              </a>
-              <a
-                href="https://drive.google.com/file/d/1jeGPP9ifB_9VEUpDfNfio7nU2DMgRQKf/view"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-gray-400 hover:text-white text-[16px] font-medium cursor-pointer transition-colors"
-                onClick={() => setToggle(false)}
-              >
-                Resume
-              </a>
-            </ul>
-          </motion.div>
-        </div>
-      </div>
-
-      {/* Scroll Progress Bar */}
-      <div className="absolute bottom-0 left-0 right-0 h-[2px] bg-gray-800/30">
-        <motion.div
-          className="h-full bg-gradient-to-r from-cyan-400 to-blue-500 scroll-progress"
-          style={{ scaleX: scrollProgress }}
-        />
-      </div>
-    </nav>
+      {isDark ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
+    </button>
   );
 };
 
-export default NewNavbar;
+const Navbar = () => {
+  const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const active = useActiveSection(sectionIds);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 8);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  // Close the mobile menu with Escape.
+  useEffect(() => {
+    if (!open) return;
+    const onKey = (e) => e.key === "Escape" && setOpen(false);
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [open]);
+
+  const linkClass = (id) =>
+    `rounded-md px-3 py-1.5 text-sm transition-colors ${
+      active === id ? "bg-subtle font-medium text-ink" : "text-muted hover:text-ink"
+    }`;
+
+  return (
+    <header
+      className={`sticky top-0 z-40 border-b transition-colors duration-200 ${
+        scrolled || open ? "border-line bg-bg/80 backdrop-blur-lg" : "border-transparent bg-transparent"
+      }`}
+    >
+      <nav className="container-page flex h-16 items-center justify-between" aria-label="Primary">
+        <a href="#top" className="flex items-center gap-2.5 font-semibold tracking-tight text-ink">
+          <span className="grid h-8 w-8 place-items-center rounded-lg bg-accent font-mono text-[0.7rem] font-semibold text-accent-ink">
+            JM
+          </span>
+          <span>{profile.name}</span>
+        </a>
+
+        <div className="hidden items-center gap-1 md:flex">
+          {navLinks.map((link) => (
+            <a
+              key={link.id}
+              href={`#${link.id}`}
+              className={linkClass(link.id)}
+              aria-current={active === link.id ? "true" : undefined}
+            >
+              {link.label}
+            </a>
+          ))}
+          <span className="mx-2 h-5 w-px bg-line" aria-hidden="true" />
+          <ThemeToggle />
+          <a href={profile.resume} target="_blank" rel="noopener noreferrer" className="btn-primary ml-2 py-2">
+            Resume
+          </a>
+        </div>
+
+        <div className="flex items-center gap-1 md:hidden">
+          <ThemeToggle />
+          <button
+            type="button"
+            onClick={() => setOpen((v) => !v)}
+            className="grid h-9 w-9 place-items-center rounded-lg text-ink hover:bg-subtle"
+            aria-expanded={open}
+            aria-controls="mobile-menu"
+            aria-label={open ? "Close menu" : "Open menu"}
+          >
+            {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+          </button>
+        </div>
+      </nav>
+
+      <div id="mobile-menu" hidden={!open} className="border-t border-line md:hidden">
+        <div className="container-page flex flex-col py-3">
+          {navLinks.map((link) => (
+            <a key={link.id} href={`#${link.id}`} onClick={() => setOpen(false)} className={`${linkClass(link.id)} py-3`}>
+              {link.label}
+            </a>
+          ))}
+          <a
+            href={profile.resume}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => setOpen(false)}
+            className="btn-primary mb-2 mt-3"
+          >
+            Download Resume
+          </a>
+        </div>
+      </div>
+    </header>
+  );
+};
+
+export default Navbar;

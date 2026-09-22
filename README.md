@@ -1,8 +1,29 @@
-# React + Vite
+# Jeevesh Mahato — Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Personal portfolio site built with React, Vite and Tailwind CSS.
 
-Currently, two official plugins are available:
+## Development
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+```bash
+npm install
+npm run dev      # local dev server
+npm run lint
+npm run build    # production build in dist/
+npm run deploy   # publish dist/ to GitHub Pages
+```
+
+## Updating content
+
+All text (experience, projects, skills, links) lives in `src/data/profile.js`.
+To publish a new Resume, replace `public/Jeevesh_Mahato_Resume.pdf`.
+
+## Design system
+
+Colors are defined once as CSS variables in `src/index.css` and exposed to
+Tailwind in `tailwind.config.js` (`bg`, `surface`, `subtle`, `line`, `ink`,
+`muted`, `faint`, `accent`). Light and dark themes swap the variable values;
+components never hard-code colors.
+
+- Neutrals: warm stone scale
+- Accent: teal (`#0F766E` light / `#2DD4BF` dark)
+- Type: Geist (UI and body), Geist Mono (labels, dates), Instrument Serif italic (one accent word per heading, via `<Em>`)

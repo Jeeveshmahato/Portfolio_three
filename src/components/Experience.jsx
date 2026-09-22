@@ -1,102 +1,79 @@
-import React from "react";
-import {
-  VerticalTimeline,
-  VerticalTimelineElement,
-} from "react-vertical-timeline-component";
-import { motion } from "framer-motion";
-import "react-vertical-timeline-component/style.min.css";
+import { experience } from "../data/profile";
+import Section, { Em } from "./Section";
 
-import { experiences } from "../Constants";
-import { SectionWrapper } from "../hoc";
-import { textVariant, fadeIn, staggerContainer } from "../utils/motion";
-
-const ExperienceCard = ({ experience, index }) => {
-  return (
-    <VerticalTimelineElement
-      contentStyle={{
-        background: "#0f0f23",
-        color: "#fff",
-        borderRadius: "1rem",
-        boxShadow: "0 4px 20px rgba(0,0,0,0.15)",
-        border: "1px solid rgba(255,255,255,0.05)",
-      }}
-      contentArrowStyle={{
-        borderRight: "10px solid #0f0f23",
-      }}
-      date={experience.date}
-      dateClassName="text-gray-400"
-      iconStyle={{
-        background: experience.iconBg,
-        boxShadow: "0 0 0 4px rgba(255,255,255,0.05)",
-      }}
-      icon={
-        <div className="flex justify-center items-center w-full h-full">
-          <img
-            src={experience.icon}
-            alt={experience.company_name}
-            className="w-[80%] h-[80%] object-contain"
-          />
-        </div>
-      }
-      visible={true}
-    >
-      <div>
-        <h3 className="text-white text-lg sm:text-xl font-bold">
-          {experience.title}
-        </h3>
-        <p className="text-cyan-400 text-sm font-medium mt-0.5">
-          {experience.company_name}
-        </p>
-
-        <ul className="mt-4 space-y-2">
-          {experience.points.map((point, i) => (
-            <li
-              key={`experience-point-${i}`}
-              className="text-gray-400 text-xs sm:text-sm leading-relaxed pl-3 border-l border-gray-800 hover:border-cyan-500/40 transition-colors duration-200"
-            >
-              {point}
-            </li>
-          ))}
-        </ul>
-      </div>
-    </VerticalTimelineElement>
-  );
+// "Content Whale" -> "CW", "Ynaps" -> "YN"
+const initials = (name) => {
+  const words = name.split(" ");
+  return (words.length > 1 ? words[0][0] + words[1][0] : name.slice(0, 2)).toUpperCase();
 };
 
-const Experience = () => {
-  return (
-    <motion.section
-      variants={staggerContainer()}
-      initial="hidden"
-      whileInView="show"
-      viewport={{ once: true, margin: "-100px" }}
-      className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20"
-    >
-      <motion.div variants={textVariant()} className="text-center mb-16">
-        <p className="text-sm uppercase tracking-wider text-cyan-400 mb-2">
-          What I have done so far
-        </p>
-        <h2 className="text-4xl sm:text-5xl font-bold text-white">
-          Work Experience<span className="text-cyan-400">.</span>
-        </h2>
-      </motion.div>
-
-      <motion.div variants={fadeIn("up", "spring", 0.3, 1)}>
-        <VerticalTimeline
-          lineColor="rgba(99, 102, 241, 0.15)"
-          layout="1-column-left"
+const Experience = () => (
+  <Section
+    id="experience"
+    index="02"
+    label="Experience"
+    muted
+    title={
+      <>
+        Where I&rsquo;ve <Em>worked</Em>.
+      </>
+    }
+    intro="Product engineering, delivery leadership and enterprise systems, across five teams."
+  >
+    <ol className="ml-5 max-w-4xl">
+      {experience.map((job) => (
+        <li
+          key={`${job.company}-${job.period}`}
+          className="reveal relative border-l border-line pb-14 pl-10 last:border-transparent last:pb-0 sm:pl-12"
         >
-          {experiences.map((experience, index) => (
-            <ExperienceCard
-              key={`experience-${index}`}
-              experience={experience}
-              index={index}
-            />
-          ))}
-        </VerticalTimeline>
-      </motion.div>
-    </motion.section>
-  );
-};
+          <span
+            className={`absolute -left-5 top-0 grid h-10 w-10 place-items-center rounded-xl border font-mono text-[0.7rem] font-semibold ${
+              job.current
+                ? "border-accent bg-accent text-accent-ink shadow-md shadow-accent/25"
+                : "border-line bg-surface text-muted"
+            }`}
+            aria-hidden="true"
+          >
+            {initials(job.company)}
+          </span>
 
-export default SectionWrapper(Experience, "work");
+          <div className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1 pt-1.5">
+            <h3 className="text-lg font-semibold tracking-tight text-ink">{job.role}</h3>
+            <p className="font-mono text-xs tabular-nums text-faint">{job.period}</p>
+          </div>
+          <p className="mt-1 flex flex-wrap items-center gap-x-2 text-sm text-muted">
+            <span className="font-medium text-ink">{job.company}</span>
+            <span aria-hidden="true">·</span>
+            <span>{job.location}</span>
+            {job.current && (
+              <span className="ml-1 rounded-full bg-accent/10 px-2 py-0.5 text-xs font-medium text-accent">
+                Current
+              </span>
+            )}
+          </p>
+
+          <ul className="mt-5 space-y-3">
+            {job.points.map((point) => (
+              <li
+                key={point.slice(0, 32)}
+                className="relative pl-5 text-[0.95rem] leading-relaxed text-muted before:absolute before:left-0 before:top-[0.72em] before:h-px before:w-2.5 before:bg-accent/60"
+              >
+                {point}
+              </li>
+            ))}
+          </ul>
+
+          <ul className="mt-5 flex flex-wrap gap-1.5" aria-label="Technologies used">
+            {job.stack.map((tech) => (
+              <li key={tech} className="chip bg-surface">
+                {tech}
+              </li>
+            ))}
+          </ul>
+        </li>
+      ))}
+    </ol>
+  </Section>
+);
+
+export default Experience;

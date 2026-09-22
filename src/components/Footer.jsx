@@ -1,91 +1,93 @@
-import React from "react";
-import { Mail, Phone, ArrowUp } from "lucide-react";
-import { FaGithub, FaLinkedinIn, FaWhatsapp } from "react-icons/fa";
+import { useEffect, useState } from "react";
+import { ArrowUp } from "lucide-react";
+import { navLinks, profile } from "../data/profile";
 
-const Footer = () => {
-  const currentYear = new Date().getFullYear();
+const timeFormat = new Intl.DateTimeFormat("en-IN", {
+  timeZone: "Asia/Kolkata",
+  hour: "2-digit",
+  minute: "2-digit",
+  hour12: true,
+});
 
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
+const LocalTime = () => {
+  const [now, setNow] = useState(() => new Date());
 
-  return (
-    <footer className="relative bg-[#050816] border-t border-gray-800/50">
-      <div className="max-w-7xl mx-auto px-6 py-10">
-        <div className="flex flex-col md:flex-row justify-between items-center gap-6">
-          <div className="text-center md:text-left">
-            <h3 className="text-white font-bold text-lg">
-              Jeevesh{" "}
-              <span className="bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-blue-500">
-                Mahato
-              </span>
-            </h3>
-            <p className="text-gray-500 text-sm mt-1">
-              Full Stack Developer &amp; Frontend System Architect
-            </p>
-          </div>
+  useEffect(() => {
+    const id = setInterval(() => setNow(new Date()), 30_000);
+    return () => clearInterval(id);
+  }, []);
 
-          <div className="flex items-center gap-3">
-            <a
-              href="https://github.com/Jeeveshmahato"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:text-white hover:bg-white/10 hover:border-white/20 transition-all duration-200"
-              aria-label="GitHub"
-            >
-              <FaGithub size={16} />
-            </a>
-            <a
-              href="https://www.linkedin.com/in/jeeveshmahato/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:text-[#0A66C2] hover:bg-[#0A66C2]/10 hover:border-[#0A66C2]/30 transition-all duration-200"
-              aria-label="LinkedIn"
-            >
-              <FaLinkedinIn size={16} />
-            </a>
-            <a
-              href="https://wa.me/916203534938"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:text-[#25D366] hover:bg-[#25D366]/10 hover:border-[#25D366]/30 transition-all duration-200"
-              aria-label="WhatsApp"
-            >
-              <FaWhatsapp size={16} />
-            </a>
-            <a
-              href="mailto:jeeveshmaaht@gmail.com"
-              className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:text-cyan-400 hover:bg-cyan-400/10 hover:border-cyan-400/30 transition-all duration-200"
-              aria-label="Email"
-            >
-              <Mail className="w-4 h-4" />
-            </a>
-            <a
-              href="tel:+916203534938"
-              className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:text-violet-400 hover:bg-violet-400/10 hover:border-violet-400/30 transition-all duration-200"
-              aria-label="Phone"
-            >
-              <Phone className="w-4 h-4" />
-            </a>
-          </div>
-        </div>
-
-        <div className="mt-8 pt-6 border-t border-gray-800/50 flex flex-col sm:flex-row justify-between items-center gap-4">
-          <p className="text-gray-600 text-xs">
-            &copy; {currentYear} Jeevesh Mahato. All rights reserved.
-          </p>
-
-          <button
-            onClick={scrollToTop}
-            className="flex items-center gap-2 text-gray-500 text-xs hover:text-cyan-400 transition-colors duration-200 group"
-          >
-            Back to top
-            <ArrowUp className="w-3 h-3 group-hover:-translate-y-0.5 transition-transform duration-200" />
-          </button>
-        </div>
-      </div>
-    </footer>
-  );
+  return <time dateTime={now.toISOString()}>{timeFormat.format(now)} IST</time>;
 };
+
+const connect = [
+  { label: "Email", href: `mailto:${profile.email}` },
+  { label: "LinkedIn", href: profile.linkedin, external: true },
+  { label: "GitHub", href: profile.github, external: true },
+  { label: "Resume", href: profile.resume, external: true },
+];
+
+const Footer = () => (
+  <footer className="border-t border-line">
+    <div className="container-page grid gap-10 py-14 sm:grid-cols-[minmax(0,1.5fr)_1fr_1fr]">
+      <div>
+        <a href="#top" className="flex items-center gap-2.5 font-semibold tracking-tight text-ink">
+          <span className="grid h-8 w-8 place-items-center rounded-lg bg-accent font-mono text-[0.7rem] font-semibold text-accent-ink">
+            JM
+          </span>
+          {profile.name}
+        </a>
+        <p className="mt-4 max-w-xs text-sm leading-relaxed text-muted">
+          {profile.role} based in {profile.location}. Working remotely with teams worldwide.
+        </p>
+        <p className="mt-4 font-mono text-xs text-faint">
+          Local time · <LocalTime />
+        </p>
+      </div>
+
+      <nav aria-label="Footer">
+        <p className="eyebrow text-faint">Navigate</p>
+        <ul className="mt-4 space-y-2.5 text-sm">
+          {navLinks.map((link) => (
+            <li key={link.id}>
+              <a href={`#${link.id}`} className="text-muted transition-colors hover:text-ink">
+                {link.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </nav>
+
+      <div>
+        <p className="eyebrow text-faint">Connect</p>
+        <ul className="mt-4 space-y-2.5 text-sm">
+          {connect.map((item) => (
+            <li key={item.label}>
+              <a
+                href={item.href}
+                {...(item.external && { target: "_blank", rel: "noopener noreferrer" })}
+                className="text-muted transition-colors hover:text-ink"
+              >
+                {item.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+
+    <div className="border-t border-line">
+      <div className="container-page flex flex-col gap-3 py-6 text-xs text-faint sm:flex-row sm:items-center sm:justify-between">
+        <p>
+          &copy; {new Date().getFullYear()} {profile.name}. Designed and built by me.
+        </p>
+        <a href="#top" className="inline-flex items-center gap-1.5 transition-colors hover:text-ink">
+          Back to top
+          <ArrowUp className="h-3.5 w-3.5" aria-hidden="true" />
+        </a>
+      </div>
+    </div>
+  </footer>
+);
 
 export default Footer;

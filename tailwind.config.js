@@ -1,34 +1,36 @@
 /** @type {import('tailwindcss').Config} */
-module.exports = {
-  content: ["./src/**/*.{js,jsx}"],
-  mode: "jit",
+
+// Colors are CSS variables (RGB channels) defined in src/index.css, so a
+// single class like `bg-surface` works in both light and dark themes.
+const token = (name) => `rgb(var(--${name}) / <alpha-value>)`;
+
+const fallback = ["ui-sans-serif", "system-ui", "-apple-system", "Segoe UI", "Roboto", "sans-serif"];
+
+export default {
+  content: ["./index.html", "./src/**/*.{js,jsx}"],
+  darkMode: "class",
   theme: {
     extend: {
       colors: {
-        primary: "#050816",
-        secondary: "#aaa6c3",
-        tertiary: "#151030",
-        "black-100": "#100d25",
-        "black-200": "#090325",
-        "white-100": "#f3f3f3",
+        bg: token("bg"),
+        surface: token("surface"),
+        subtle: token("subtle"),
+        line: token("line"),
+        ink: token("ink"),
+        muted: token("muted"),
+        faint: token("faint"),
+        accent: token("accent"),
+        "accent-ink": token("accent-ink"),
+        "accent-bright": token("accent-bright"),
+        panel: token("panel"),
       },
-      fontFamily:{
-        'urbanist':'Urbanist',
-        'cinzel' : 'Cinzel',
-        'inter' : 'Inter',
-        'lato' : 'Lato',
-        'rubik' : 'Rubik',
-        'krub': 'Krub',
-        'roboto':'Roboto'
+      fontFamily: {
+        sans: ["Geist", ...fallback],
+        mono: ["Geist Mono", "ui-monospace", "SFMono-Regular", "Menlo", "Consolas", "monospace"],
+        serif: ["Instrument Serif", "ui-serif", "Georgia", "serif"],
       },
-      boxShadow: {
-        card: "0px 35px 120px -15px #211e35",
-      },
-      screens: {
-        xs: "450px",
-      },
-      backgroundImage: {
-        "hero-pattern": "url('/src/assets/herobg.png')",
+      maxWidth: {
+        page: "72rem",
       },
     },
   },
