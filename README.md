@@ -15,7 +15,8 @@ npm run deploy   # publish dist/ to GitHub Pages
 ## Updating content
 
 All text (experience, projects, skills, links) lives in `src/data/profile.js`.
-To publish a new Resume, replace `public/Jeevesh_Mahato_Resume.pdf`.
+The Resume is hosted on Google Drive (`profile.resume`). To publish a new
+version, replace the file in Drive using "Manage versions" so the link stays the same.
 
 ## Design system
 

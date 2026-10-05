@@ -15,7 +15,8 @@ export const profile = {
   phoneHref: "tel:+916203534938",
   github: "https://github.com/Jeeveshmahato",
   linkedin: "https://www.linkedin.com/in/jeeveshmahato/",
-  resume: `${import.meta.env.BASE_URL}Jeevesh_Mahato_Resume.pdf`,
+  // Hosted on Google Drive so the Resume can be updated without redeploying.
+  resume: "https://drive.google.com/file/d/1ey9HspadcUB-R-AI-ep80h6-ujfKBg8K/view?usp=sharing",
   current: { title: "Full Stack Engineer", company: "Content Whale" },
   headline:
     "I build scalable web and mobile applications across the frontend, backend and AI layers.",
