@@ -2,6 +2,9 @@
 import maitriImg from "../assets/Maitri_App.png";
 import aiToolsImg from "../assets/getAITool.webp";
 import netflixImg from "../assets/Netflix_Clone.png";
+import safeOneHomeImg from "../assets/SafeOne_Home.jpg";
+import safeOneFakeCallImg from "../assets/SafeOne_FakeCall.jpg";
+import safeOneIcon from "../assets/SafeOne_Icon.png";
 
 export const profile = {
   name: "Jeevesh Mahato",
@@ -15,9 +18,9 @@ export const profile = {
   resume: `${import.meta.env.BASE_URL}Jeevesh_Mahato_Resume.pdf`,
   current: { title: "Full Stack Engineer", company: "Content Whale" },
   headline:
-    "I build scalable web applications across the frontend, backend and AI layers.",
+    "I build scalable web and mobile applications across the frontend, backend and AI layers.",
   summary:
-    "For 4+ years I've worked with React, Next.js, Node.js, Laravel and Python FastAPI on PostgreSQL, MongoDB and Redis, and designed and shipped AI content generation pipelines using OpenAI, Gemini and Perplexity with RAG and vector search.",
+    "For 4+ years I've worked with React, Next.js, Node.js, Laravel, Python FastAPI and Flutter on PostgreSQL, MongoDB and Redis. I've designed and shipped AI content generation pipelines with RAG and vector search, and published SafeOne, a personal safety app, on Google Play.",
 };
 
 export const navLinks = [
@@ -39,6 +42,7 @@ export const highlights = [
 export const about = [
   "I'm a full stack engineer who enjoys owning a feature end to end, from the database schema and API design to the interface people actually use. Most of my work sits where product, performance and infrastructure meet.",
   "Right now I'm at Content Whale, building an AI content platform in Laravel and FastAPI: a multi-stage generation pipeline, retrieval with pgvector, and quality checks before anything gets published. Before that I built React and Next.js products for security, e-commerce and analytics teams, and spent a year leading delivery as a project manager.",
+  "Outside work I build for mobile too. SafeOne, my Flutter app on Google Play, uses native Kotlin services so SOS alerts and live location keep working when the phone is locked.",
 ];
 
 export const focusAreas = [
@@ -56,6 +60,11 @@ export const focusAreas = [
     title: "AI and LLM systems",
     description:
       "Content pipelines on OpenAI, Gemini and Perplexity with RAG, embeddings, semantic search and automated quality gates.",
+  },
+  {
+    title: "Mobile apps",
+    description:
+      "Flutter apps with native Kotlin modules, foreground services and offline-first storage, shipped through Google Play.",
   },
 ];
 
@@ -118,7 +127,29 @@ export const experience = [
   },
 ];
 
+// `platform: "mobile"` renders phone screenshots instead of a browser window.
+// `source` is optional; leave it out for closed-source projects.
 export const projects = [
+  {
+    name: "SafeOne",
+    tagline: "Personal safety app · Live on Google Play",
+    platform: "mobile",
+    icon: safeOneIcon,
+    description:
+      "An Android personal safety app built in Flutter with native Kotlin modules. One-tap and hands-free SOS (shake, volume or power button) texts every emergency contact a live location. A check-in timer and live location sharing keep running on a locked phone through a foreground service and exact alarms, and a realistic fake incoming call helps users leave unsafe situations.",
+    highlights: [
+      "Material 3 design system with dark mode, localized into 13 Indian languages",
+      "Offline-first with no backend; PIN stored as a salted hash in Android Keystore-backed storage with biometric unlock",
+      "Google Play policy compliance for SMS, background location and foreground service permissions",
+    ],
+    stack: ["Flutter", "Dart", "Kotlin", "Android SDK", "Material 3"],
+    images: [
+      { src: safeOneHomeImg, alt: "SafeOne home screen with a large SOS button and safety tools" },
+      { src: safeOneFakeCallImg, alt: "SafeOne fake incoming call screen" },
+    ],
+    live: "https://play.google.com/store/apps/details?id=com.safeone.app",
+    liveLabel: "Get it on Google Play",
+  },
   {
     name: "Maitri App",
     description:
@@ -151,11 +182,15 @@ export const projects = [
 export const skills = [
   {
     group: "Frontend",
-    items: ["React.js", "Next.js", "TypeScript", "JavaScript (ES6+)", "Redux Toolkit", "Vue.js", "Tailwind CSS", "SASS", "Material UI", "Framer Motion", "PWAs", "WCAG 2.1"],
+    items: ["React.js", "Next.js", "TypeScript", "JavaScript (ES6+)", "HTML5", "CSS3", "Redux Toolkit", "Vue.js", "Tailwind CSS", "Bootstrap", "SASS", "Material UI", "Framer Motion", "PWAs", "Responsive Design", "WCAG 2.1"],
   },
   {
     group: "Backend",
     items: ["Node.js", "Express.js", "PHP", "Laravel", "Python FastAPI", "REST APIs", "GraphQL", "WebSockets", "Socket.io", "Server-Sent Events", "Webhooks", "Kafka", "RabbitMQ"],
+  },
+  {
+    group: "Mobile",
+    items: ["Flutter", "Dart", "Kotlin", "Android SDK", "Platform Channels", "Foreground Services", "BroadcastReceivers", "AlarmManager", "SmsManager", "Local Notifications", "Geolocation", "Biometric Auth", "Material 3", "i18n (13 languages)", "App Bundles", "R8", "Google Play Console"],
   },
   {
     group: "AI and LLM",
@@ -163,19 +198,19 @@ export const skills = [
   },
   {
     group: "Databases",
-    items: ["PostgreSQL", "MongoDB", "MySQL", "Redis", "Firestore", "IndexedDB", "SQLAlchemy", "Alembic", "Indexing", "Sharding", "Replication"],
+    items: ["PostgreSQL", "MongoDB", "MySQL", "Redis", "Firestore", "IndexedDB", "SQLAlchemy", "Alembic", "Query Optimization", "Indexing", "Sharding", "Replication"],
   },
   {
     group: "Cloud and DevOps",
-    items: ["AWS EC2", "AWS Amplify", "Docker", "GitHub Actions", "CI/CD", "Nginx", "Vercel", "Netlify", "Render", "Cloudflare", "Linux", "Prometheus", "Grafana"],
+    items: ["AWS EC2", "AWS Amplify", "Docker", "GitHub Actions", "CI/CD", "Nginx", "Vercel", "Netlify", "Render", "GitHub Pages", "Cloudflare", "Linux", "Bash", "Prometheus", "Grafana"],
   },
   {
     group: "Security and Testing",
-    items: ["JWT", "OAuth2", "OIDC", "Firebase Auth", "RBAC", "Rate Limiting", "Helmet.js", "Unit Testing", "Integration Testing", "E2E Testing", "TDD", "k6", "JMeter"],
+    items: ["JWT", "OAuth2", "OIDC", "Firebase Auth", "RBAC", "CORS", "Rate Limiting", "Helmet.js", "Android Keystore", "Unit Testing", "Integration Testing", "E2E Testing", "Flutter Widget Testing", "TDD", "k6", "JMeter"],
   },
   {
     group: "SEO and Tools",
-    items: ["Technical SEO", "Core Web Vitals", "XML Sitemaps", "IndexNow", "Shopify", "Webflow", "Razorpay", "Figma", "Adobe XD", "Git", "Jira", "Agile / Scrum"],
+    items: ["Technical SEO", "Core Web Vitals", "XML Sitemaps", "IndexNow", "Search Console", "App Store Optimization", "Shopify", "Webflow", "Razorpay", "Figma", "Adobe XD", "Git", "Jira", "Agile / Scrum"],
   },
 ];
 

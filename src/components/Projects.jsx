@@ -1,4 +1,4 @@
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, Check } from "lucide-react";
 import { profile, projects } from "../data/profile";
 import { GitHubIcon } from "./Icons";
 import Section, { Em } from "./Section";
@@ -23,16 +23,51 @@ const BrowserFrame = ({ src, alt }) => (
   </div>
 );
 
+// Phone screenshots, slightly staggered. Used for mobile projects.
+const PhoneFrames = ({ images }) => (
+  <div className="flex items-start justify-center gap-4 sm:gap-6">
+    {images.map((image, i) => (
+      <div
+        key={image.src}
+        className={`w-[42%] max-w-[13rem] rounded-[1.9rem] border border-line bg-surface p-1.5 shadow-lg shadow-ink/5 ${
+          i % 2 ? "mt-10" : ""
+        }`}
+      >
+        <div className="aspect-[9/20] overflow-hidden rounded-[1.5rem]">
+          <img
+            src={image.src}
+            alt={image.alt}
+            width="540"
+            height="1200"
+            loading="lazy"
+            decoding="async"
+            className="h-full w-full object-cover object-top transition-transform duration-500 ease-out group-hover:scale-[1.03]"
+          />
+        </div>
+      </div>
+    ))}
+  </div>
+);
+
+const Media = ({ project }) =>
+  project.platform === "mobile" ? (
+    <PhoneFrames images={project.images} />
+  ) : (
+    <BrowserFrame src={project.image} alt={`Screenshot of ${project.name}`} />
+  );
+
 const Links = ({ project }) => (
   <div className="flex flex-wrap gap-2">
     <a href={project.live} target="_blank" rel="noopener noreferrer" className="btn-secondary py-2">
-      Live demo
+      {project.liveLabel ?? "Live demo"}
       <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
     </a>
-    <a href={project.source} target="_blank" rel="noopener noreferrer" className="btn py-2 text-muted hover:text-ink">
-      <GitHubIcon className="h-4 w-4" />
-      Source
-    </a>
+    {project.source && (
+      <a href={project.source} target="_blank" rel="noopener noreferrer" className="btn py-2 text-muted hover:text-ink">
+        <GitHubIcon className="h-4 w-4" />
+        Source
+      </a>
+    )}
   </div>
 );
 
@@ -49,6 +84,9 @@ const Stack = ({ items }) => (
 const cardClass =
   "reveal card group overflow-hidden transition-all duration-300 hover:-translate-y-0.5 hover:border-faint/30 hover:shadow-xl hover:shadow-ink/5";
 
+// With two columns, an odd last card is centered instead of left dangling.
+const lastOddClass = "md:col-span-2 md:w-[calc(50%-0.75rem)] md:justify-self-center lg:col-span-1 lg:w-auto";
+
 const Projects = () => {
   const [featured, ...rest] = projects;
 
@@ -62,16 +100,31 @@ const Projects = () => {
           Things I&rsquo;ve <Em>built</Em> on my own.
         </>
       }
-      intro="Personal projects, each shipped end to end: API, authentication, payments and deployment."
+      intro="Personal projects, each shipped end to end, from web apps with their own APIs, auth and payments to a mobile app published on Google Play."
     >
       <article className={`${cardClass} grid lg:grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)]`}>
-        <div className="bg-gradient-to-br from-accent/10 via-subtle to-subtle p-5 sm:p-10">
-          <BrowserFrame src={featured.image} alt={`Screenshot of ${featured.name}`} />
+        <div className="flex flex-col justify-center bg-gradient-to-br from-accent/10 via-subtle to-subtle p-5 sm:p-10">
+          <Media project={featured} />
         </div>
         <div className="flex flex-col p-6 sm:p-10">
-          <p className="eyebrow text-accent">Featured project</p>
-          <h3 className="mt-3 text-2xl font-semibold tracking-tight text-ink">{featured.name}</h3>
+          <p className="eyebrow text-accent">{featured.tagline ?? "Featured project"}</p>
+          <h3 className="mt-3 flex items-center gap-3 text-2xl font-semibold tracking-tight text-ink">
+            {featured.icon && (
+              <img src={featured.icon} alt="" width="40" height="40" className="h-10 w-10 rounded-xl shadow-sm" />
+            )}
+            {featured.name}
+          </h3>
           <p className="mt-4 leading-relaxed text-muted">{featured.description}</p>
+          {featured.highlights && (
+            <ul className="mt-5 space-y-2.5">
+              {featured.highlights.map((point) => (
+                <li key={point} className="flex gap-2.5 text-[0.95rem] leading-relaxed text-muted">
+                  <Check className="mt-1 h-4 w-4 shrink-0 text-accent" aria-hidden="true" />
+                  {point}
+                </li>
+              ))}
+            </ul>
+          )}
           <div className="mt-6">
             <Stack items={featured.stack} />
           </div>
@@ -81,11 +134,15 @@ const Projects = () => {
         </div>
       </article>
 
-      <div className="mt-6 grid gap-6 md:grid-cols-2">
+      <div className="mt-6 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
         {rest.map((project, i) => (
-          <article key={project.name} className={`${cardClass} flex flex-col`} style={{ "--delay": `${i * 80}ms` }}>
+          <article
+            key={project.name}
+            className={`${cardClass} flex flex-col ${i === rest.length - 1 && rest.length % 2 ? lastOddClass : ""}`}
+            style={{ "--delay": `${i * 80}ms` }}
+          >
             <div className="bg-gradient-to-br from-accent/10 via-subtle to-subtle p-5 sm:p-7">
-              <BrowserFrame src={project.image} alt={`Screenshot of ${project.name}`} />
+              <Media project={project} />
             </div>
             <div className="flex flex-1 flex-col p-6 sm:p-7">
               <h3 className="text-xl font-semibold tracking-tight text-ink">{project.name}</h3>

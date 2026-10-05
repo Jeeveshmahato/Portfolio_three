@@ -1,8 +1,8 @@
-import { Brain, Monitor, Server } from "lucide-react";
+import { Brain, Monitor, Server, Smartphone } from "lucide-react";
 import { about, focusAreas } from "../data/profile";
 import Section, { Em } from "./Section";
 
-const icons = [Monitor, Server, Brain];
+const icons = [Monitor, Server, Brain, Smartphone];
 
 const About = () => (
   <Section

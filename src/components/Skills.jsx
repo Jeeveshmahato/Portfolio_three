@@ -1,10 +1,11 @@
-import { Brain, Cloud, Database, GraduationCap, Monitor, Search, Server, ShieldCheck } from "lucide-react";
+import { Brain, Cloud, Database, GraduationCap, Monitor, Search, Server, ShieldCheck, Smartphone } from "lucide-react";
 import { education, skills } from "../data/profile";
 import Section, { Em } from "./Section";
 
 const icons = {
   Frontend: Monitor,
   Backend: Server,
+  Mobile: Smartphone,
   "AI and LLM": Brain,
   Databases: Database,
   "Cloud and DevOps": Cloud,
@@ -12,8 +13,13 @@ const icons = {
   "SEO and Tools": Search,
 };
 
-// Wider cards for the two groups that carry the most weight.
-const wide = new Set(["Frontend", "AI and LLM"]);
+// Column spans on the 3-column layout. Spans must add up to a multiple of 3
+// so the last row is full: [Frontend 2, Backend 1] [Mobile 3] [AI 2, DB 1] [3 x 1].
+const spans = {
+  Frontend: "lg:col-span-2",
+  Mobile: "lg:col-span-3",
+  "AI and LLM": "lg:col-span-2",
+};
 
 const Skills = () => (
   <Section
@@ -34,7 +40,7 @@ const Skills = () => (
         return (
           <div
             key={group}
-            className={`reveal card p-6 ${wide.has(group) ? "lg:col-span-2" : ""}`}
+            className={`reveal card p-6 ${spans[group] ?? ""}`}
             style={{ "--delay": `${(i % 3) * 70}ms` }}
           >
             <div className="flex items-center gap-3">

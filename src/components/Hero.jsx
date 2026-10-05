@@ -26,7 +26,7 @@ const Hero = () => (
               className="rise mt-6 text-[2.5rem] font-semibold leading-[1.04] tracking-[-0.04em] text-ink sm:text-6xl lg:text-[4.1rem]"
               style={{ "--delay": "80ms" }}
             >
-              I build web products from the <Em>interface</Em> to the <Em>AI&nbsp;pipeline</Em>.
+              I build web and mobile products from the <Em>interface</Em> to the <Em>AI&nbsp;pipeline</Em>.
             </h1>
 
             <p
